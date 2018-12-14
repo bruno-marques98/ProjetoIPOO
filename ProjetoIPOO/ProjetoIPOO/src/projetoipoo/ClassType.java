@@ -9,24 +9,19 @@ package projetoipoo;
  *
  * @author bruno
  */
-public enum ClassroomType {
-    THEORY, PRACTICAL, LAB, TUTORIALS;
-
-    @Override
+public enum ClassType {
+    THEORY, PRACTICAL, LAB;
+     @Override
     public String toString() {
-        String str = "" ;
         switch(this){
             case THEORY:
-                return str+= " theory";
+                return " theory";
             case PRACTICAL:
-                return str+= " practical";
+                return " practical";
             case LAB:
-                return str+= " lab";
-            case TUTORIALS:
-                return str+= " tutorials";
+                return " lab";
             default:
-                return str;
+                return "";
         }
     }
-   
 }
