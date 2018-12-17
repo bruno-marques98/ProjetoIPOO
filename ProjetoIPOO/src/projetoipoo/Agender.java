@@ -20,6 +20,12 @@ public class Agender {
     private Instructor[] instructors;
     private Group[] groups;
 
+    /**
+     *
+     * @param startSemester
+     * @param endSemester
+     * @param isSemesterPar
+     */
     public Agender(LocalDateTime startSemester, LocalDateTime endSemester, boolean isSemesterPar) {
         this.startSemester = startSemester;
         this.endSemester = endSemester;
@@ -29,47 +35,93 @@ public class Agender {
         groups = new Group[10];
     }
 
+    /**
+     *
+     * @return
+     */
     public LocalDateTime getStartSemester() {
         return startSemester;
     }
 
+    /**
+     *
+     * @return
+     */
     public LocalDateTime getEndSemester() {
         return endSemester;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isIsSemesterPar() {
         return isSemesterPar;
     }
 
+    /**
+     *
+     * @return
+     */
     public UC[] getUcs() {
         return ucs;
     }
 
+    /**
+     *
+     * @return
+     */
     public Instructor[] getInstructors() {
         return instructors;
     }
 
+    /**
+     *
+     * @return
+     */
     public Group[] getGroups() {
         return groups;
     }
 
+    /**
+     *
+     * @param startSemester
+     */
     public void setStartSemester(LocalDateTime startSemester) {
         if(startSemester!=null) this.startSemester = startSemester;
     }
 
+    /**
+     *
+     * @param endSemester
+     */
     public void setEndSemester(LocalDateTime endSemester) {
         if(endSemester!=null)this.endSemester = endSemester;
     }
 
+    /**
+     *
+     * @param isSemesterPar
+     */
     public void setIsSemesterPar(boolean isSemesterPar) {
         this.isSemesterPar = isSemesterPar;
     }
     
+    /**
+     *
+     * @param groups
+     */
     public void setGroup(Group[] groups){
         if(groups != null){
             this.groups = groups;
         }
     }
+
+    /**
+     *
+     * @param uc
+     * @return
+     */
     public boolean addUC(UC uc){
         if(uc!=null){
             for(int i = 0; i < ucs.length; i++){
@@ -81,6 +133,12 @@ public class Agender {
         }
         return false;
     }
+
+    /**
+     *
+     * @param group
+     * @return
+     */
     public boolean addGroup(Group group){
         if(group != null){
             for (int i = 0; i < groups.length; i++) {
@@ -91,6 +149,10 @@ public class Agender {
         }
         return false;
     }
+
+    /**
+     *
+     */
     public void showGroup(){
         for(int i = 0; i < groups.length; i++){
             if(groups[i] != null){
@@ -99,6 +161,10 @@ public class Agender {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public int totalCredits(){
         int totalCredits = 0;
         for(UC uc: ucs){
@@ -107,6 +173,11 @@ public class Agender {
         }
         return totalCredits;
     }
+
+    /**
+     *
+     * @return
+     */
     public double totalHours(){
         long totalMinutes=0;
          for(UC uc: ucs){
@@ -122,6 +193,9 @@ public class Agender {
          return totalHours;
     }
     
+    /**
+     *
+     */
     public void avaliations(){
         //Do avaliations
     }
