@@ -50,4 +50,22 @@ public class Group {
         return students;
     }
     
+    public boolean containsStudent(int studentNumber){
+        for(Student student : students){
+            if(student.getStudentNumber() == studentNumber){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        String txt = "UC: " + uc.getUCName();
+        for(Student std : students){
+            txt+= std.toString() + "\n";
+        }
+        return txt;
+    }
+    
 }

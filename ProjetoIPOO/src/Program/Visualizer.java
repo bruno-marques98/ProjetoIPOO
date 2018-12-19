@@ -7,8 +7,14 @@ package Program;
 
 import projetoipoo.Classroom;
 import projetoipoo.Evaluation;
+import projetoipoo.Group;
 import projetoipoo.Instructor;
 import projetoipoo.Student;
+import projetoipoo.Agender;
+import projetoipoo.Class;
+import projetoipoo.ClassDurationType;
+import projetoipoo.ClassType;
+
 
 /**
  *
@@ -27,6 +33,13 @@ public class Visualizer {
         this.evaluations = new Evaluation[20];
     }
     
+    public void showGroups(int studentNumber, Group[] groups){
+         for(Group group : groups){
+             if(group.containsStudent(studentNumber)){
+                 group.toString();
+             }
+         }
+    }
     
     
     

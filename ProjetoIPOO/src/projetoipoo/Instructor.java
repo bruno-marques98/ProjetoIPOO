@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
  * @author bruno
  */
 public class Instructor {
-        private String name;
+    private String name;
     private int id;
     private String email;
     private Classroom room;
