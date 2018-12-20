@@ -16,21 +16,21 @@ import java.time.format.DateTimeFormatter;
 public class Schedule {
     private LocalDateTime beginning;
     private LocalDateTime ending;
-    private int duration;
+    private double duration;
     
     public Schedule(){
         this.beginning = LocalDateTime.now();
         this.duration = 90;
         this.ending = LocalDateTime.now().plusMinutes(90);
     }
-    public Schedule(LocalDateTime date, int duration){
+    public Schedule(LocalDateTime date, double duration){
         if(date != null){
             this.beginning = date;
         }
         if(duration >0){
             this.duration = duration;
         }
-        this.ending = beginning.plusMinutes(duration);
+        this.ending = beginning.plusMinutes((long)duration);
     }
     public Schedule(LocalDateTime beginDate, LocalDateTime endDate){
         if(beginDate != null){
@@ -50,7 +50,7 @@ public class Schedule {
      public LocalDateTime getEnding(){
         return this.ending;
     }
-    public int getDuration(){
+    public double getDuration(){
         return this.duration;
     }
     public void setBeginning(LocalDateTime date){
@@ -63,7 +63,7 @@ public class Schedule {
             this.ending = data;
         }
     }
-    public void setDuration(int duration){
+    public void setDuration(double duration){
         if(duration >0){
             this.duration = duration;
         }

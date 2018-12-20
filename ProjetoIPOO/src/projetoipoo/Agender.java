@@ -7,6 +7,9 @@ package projetoipoo;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import static java.time.temporal.ChronoUnit.DAYS;
+import static java.time.temporal.ChronoUnit.WEEKS;
 
 /**
  *
@@ -19,6 +22,7 @@ public class Agender {
     private UC[] ucs;
     private Instructor[] instructors;
     private Group[] groups;
+    private Schedule[] schedules;
 
     /**
      *
@@ -33,6 +37,7 @@ public class Agender {
         ucs = new UC[10];
         instructors = new Instructor[10];
         groups = new Group[10];
+        schedules = new Schedule[7];
     }
 
     /**
@@ -192,11 +197,30 @@ public class Agender {
          double totalHours = totalMinutes / 60;
          return totalHours;
     }
-    
-    /**
-     *
-     */
-    public void avaliations(){
-        //Do avaliations
+    public Evaluation[] evaluation(){
+        Evaluation[] evaluations = new Evaluation[ucs.length];
+        for(int i = 0; i < ucs.length ; i++){
+            evaluations[i] = ucs[i].getEvaluation();
+        }
+        return evaluations;
     }
+    
+    public int getWeeks(){
+        long weeksBetween = WEEKS.between(startSemester,endSemester);
+        return (int) weeksBetween;
+    }
+    
+    public void setClassEveryWeek(Schedule schedule){
+        for(Schedule sch : schedules){
+            if(sch.equals(schedule)){
+                 for(int i = 0;i< getWeeks(); i++){
+                     if(schedules[i] != null){
+                         schedules[i] = new Schedule(schedule.getBeginning().plusDays(7),schedule.getDuration());
+                     }
+                }
+            }
+        }
+       
+    }
+    
 }

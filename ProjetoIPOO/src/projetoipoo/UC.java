@@ -14,13 +14,20 @@ public class UC {
     private String id;
     private int numberOfCredits;
     private UCClass[] classes;
+    private Evaluation evaluation;
     
-    public UC(String UCName, String id) {
+    public UC(String UCName, String id,Evaluation evaluation) {
         this.UCName = UCName;
         this.id = id;
         this.numberOfCredits = 6;
         this.classes = new UCClass[20];
+        this.evaluation = evaluation;
     }
+
+    public Evaluation getEvaluation() {
+        return evaluation;
+    }
+    
 
     public UCClass[] getClasses() {
         return classes;
