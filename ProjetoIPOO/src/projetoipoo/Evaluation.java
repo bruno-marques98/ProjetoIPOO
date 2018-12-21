@@ -5,6 +5,8 @@
  */
 package projetoipoo;
 
+import java.time.LocalDateTime;
+
 /**
  *
  * @author bruno
@@ -13,6 +15,7 @@ public class Evaluation {
     private EvaluationType type;
     private String description;
     private Classroom classroom;
+    private LocalDateTime date;
     public Evaluation(EvaluationType type) {
         this.type = type;
     }
@@ -21,9 +24,15 @@ public class Evaluation {
         this.type = type;
         this.description = description;
         this.classroom = classroom;
+        this.date = LocalDateTime.now();
     }
     
     public void addDescription(String description){
         this.description = description;  
     }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+    
 }

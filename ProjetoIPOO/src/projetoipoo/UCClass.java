@@ -19,6 +19,7 @@ public class UCClass {
     private Instructor instructor;
     private Classroom room;
     private ClassroomType classroomType;
+    
 
     public UCClass(LocalDateTime startClass,LocalDateTime endClass, Instructor instructor, Classroom room, ClassroomType classroomType) {
         if(startClass != null) this.startClass = startClass;

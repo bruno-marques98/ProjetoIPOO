@@ -40,6 +40,10 @@ public class Agender {
         schedules = new Schedule[7];
     }
 
+    public Schedule[] getSchedules() {
+        return schedules;
+    }
+    
     /**
      *
      * @return
@@ -205,7 +209,7 @@ public class Agender {
         return evaluations;
     }
     
-    public int getWeeks(){
+    public int getNumberWeeks(){
         long weeksBetween = WEEKS.between(startSemester,endSemester);
         return (int) weeksBetween;
     }
@@ -213,7 +217,7 @@ public class Agender {
     public void setClassEveryWeek(Schedule schedule){
         for(Schedule sch : schedules){
             if(sch.equals(schedule)){
-                 for(int i = 0;i< getWeeks(); i++){
+                 for(int i = 0;i< getNumberWeeks(); i++){
                      if(schedules[i] != null){
                          schedules[i] = new Schedule(schedule.getBeginning().plusDays(7),schedule.getDuration());
                      }
@@ -223,4 +227,5 @@ public class Agender {
        
     }
     
+
 }
