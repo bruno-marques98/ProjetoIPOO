@@ -36,9 +36,18 @@ public class Visualizer {
         this.instructors = new Instructor[50];
         this.students = new Student[100];
         this.classrooms = new Classroom[30];
-        this.evaluations = new Evaluation[20];
+        this.evaluations = new Evaluation[25];
         this.agender = new Agender(LocalDateTime.of(2018, 10, 1, 0, 0),LocalDateTime.of(2019,1, 30, 0, 0),false);
     }
+
+    public Visualizer(Instructor[] instructors, Student[] students, Classroom[] classrooms, Evaluation[] evaluations, Agender agender) {
+        this.instructors = instructors;
+        this.students = students;
+        this.classrooms = classrooms;
+        this.evaluations = evaluations;
+        this.agender = agender;
+    }
+    
     
     public void showGroups(int studentNumber, Group[] groups){
          for(Group group : groups){

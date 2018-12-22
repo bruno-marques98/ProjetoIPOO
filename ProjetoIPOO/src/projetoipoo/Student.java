@@ -24,7 +24,11 @@ public class Student {
         this.name = name;
         this.studentNumber++;
         this.birthDate = birthDate;
-        this.genre = genre;
+        if(genre == 'H' || genre == 'F'){
+             this.genre = genre;
+        }else{
+            this.genre = 'H';
+        }
         this.course = course;
         this.agenders = new Agender[10];
     }

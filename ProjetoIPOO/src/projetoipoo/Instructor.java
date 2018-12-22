@@ -13,23 +13,19 @@ import java.time.LocalDateTime;
  */
 public class Instructor {
     private String name;
-    private int id;
+    private int id = 0;
     private String email;
     private Classroom room;
     private Schedule[] schedule;
     private boolean isScheduleInserd;
     
-    public Instructor(String name, int id, String email,Classroom room){
+    public Instructor(String name, String email,Classroom room){
         if(name != null){
             this.name = name;
         }else{
             this.name = "Alguem";
         }
-        if(id>= 0){
-            this.id = id;
-        }else{
-            this.id = 1;
-        }
+        this.id++;
         if(email!= null && email.contains("@")){
             this.email = email;
         }else{
