@@ -18,6 +18,7 @@ import projetoipoo.ClassDurationType;
 import projetoipoo.ClassType;
 import projetoipoo.Schedule;
 import projetoipoo.UC;
+import projetoipoo.UCClass;
 
 
 /**
@@ -49,10 +50,10 @@ public class Visualizer {
     
     
         public Schedule[] getWeekSchedule(int numberOfWeek){
-        LocalDateTime date = startSemester.plusDays(numberOfWeek*7); 
+        LocalDateTime date = agender.getStartSemester().plusDays(numberOfWeek*7); 
         int firstDayOkWeek = date.getDayOfMonth();
         Schedule[] schds = new Schedule[20];
-        for (Schedule schedule : schedules) {
+        for (Schedule schedule : agender.getSchedules()) {
             if (schedule.getBeginning().compareTo(date) >= 0 && schedule.getBeginning().compareTo(date.plusDays(7)) < 0) {
                 for (int j = 0; j < schds.length; j++) {
                     if (schds[j] == null) {
@@ -82,28 +83,62 @@ public class Visualizer {
         Evaluation[] evaluations = new Evaluation[10];
         for(UC uC : agender.getUcs()){
             if(uC.getId() == uc.getId()){
-                if(uC.getEvaluation().getDate().compareTo(LocalDateTime.now())>=0){
-                    for(int i = 0; i < evaluations.length; i++){
-                        if(evaluations[i]!=null){
-                            evaluations[i] = uC.getEvaluation();
+                for(Evaluation evaluation : uC.getEvaluation()){
+                    if(evaluation.getDate().compareTo(LocalDateTime.now())>=0){
+                        for(int i = 0; i < evaluations.length; i++){
+                            if(evaluations[i]!=null){
+                                evaluations[i] = evaluation;
+                            }
                         }
                     }
                 }
+                
             }
         }
         return evaluations;
     }
     
     public Schedule[] getInstructorsSchedule(String ucId){
-        Instructor[] inst = new Instructor[20];
+        Schedule[] schd = new Schedule[20];
         for(UC uc : agender.getUcs()){
             if(uc.getId().compareTo(ucId) == 0){
                 for(int i = 0; i < instructors.length; i++){
-                    
+                    if(instructors[i].getSchedule() != null){
+                        schd = instructors[i].getSchedule();
+                    }
                 }
             }
         }
+        return schd;
     }  
-    
-    
+    public UCClass[] getClasses(String classroomName){
+        UCClass[] ucClasses = new UCClass[20]; 
+        for(UC uc : agender.getUcs()){
+            for(UCClass ucClass : uc.getClasses()){
+                if(ucClass.getRoom().getName().compareTo(classroomName)==0){
+                    for(int i = 0; i < ucClasses.length ; i++){
+                        if(ucClasses[i] != null){
+                              ucClasses[i] = ucClass;
+                        }
+                    }
+                }
+            }
+        }
+        return ucClasses;
+    }
+    public UC[] getUCs(){
+        UC[] ucs = new UC[20];
+        for(UC ucss : agender.getUcs()){
+            for(UCClass ucClasses: ucss.getClasses()){
+                if(ucClasses.getEndClass().compareTo(agender.getEndSemester())<0){
+                    for(int i = 0; i < ucs.length; i++){
+                        if(ucs[i] != null){
+                            ucs[i] = ucss;
+                        }
+                    }
+                }
+            }
+        }
+        return ucs;
+    }
 }

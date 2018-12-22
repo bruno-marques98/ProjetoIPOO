@@ -204,7 +204,10 @@ public class Agender {
     public Evaluation[] evaluation(){
         Evaluation[] evaluations = new Evaluation[ucs.length];
         for(int i = 0; i < ucs.length ; i++){
-            evaluations[i] = ucs[i].getEvaluation();
+            for(Evaluation evaluation: ucs[i].getEvaluation()){
+                 evaluations[i] = evaluation;
+            }
+               
         }
         return evaluations;
     }
