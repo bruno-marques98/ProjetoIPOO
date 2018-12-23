@@ -30,15 +30,7 @@ public class Agender {
      * @param endSemester
      * @param isSemesterPar
      */
-    public Agender(LocalDate startSemester, LocalDate endSemester, boolean isSemesterPar) {
-        this.startSemester = startSemester;
-        this.endSemester = endSemester;
-        this.isSemesterPar = isSemesterPar;
-        ucs = new UC[10];
-        instructors = new Instructor[10];
-        groups = new Group[10];
-        schedules = new Schedule[7];
-    }
+
 
     public Agender(LocalDate startSemester, LocalDate endSemester, boolean isSemesterPar, UC[] ucs, Instructor[] instructors, Group[] groups, Schedule[] schedules) {
         this.startSemester = startSemester;

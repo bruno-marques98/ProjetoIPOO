@@ -40,7 +40,7 @@ public class Program {
          
         Schedule[] schedules = createSchedules();
          
-        Instructor[] instructors = createInstructors(classrooms);
+        Instructor[] instructors = createInstructors(classrooms, schedules);
          
         Course[] courses = createCourses();
 
@@ -51,11 +51,14 @@ public class Program {
         UC[] ucs = createUcs(classes,evaluations);
         
         Group[] groups = createGroups(ucs,students);
+        groups[0].addStudent(students[0]);
         
         Agender agender = new Agender(LocalDate.of(2018,10,1),LocalDate.of(2019,1,28),false,ucs,instructors,groups,schedules);
          
         Visualizer visualizer = new Visualizer(instructors,students,classrooms,evaluations,agender);
          
+        visualizer.showGroups(1, groups);
+        
         Schedule[] weekSchedule = visualizer.getWeekSchedule(1);
         for(int i = 0; i < weekSchedule.length;i++){
             weekSchedule[i].dateAndDurationToString();
@@ -192,18 +195,18 @@ public class Program {
         schedules[23] = schedule23;
         return schedules;
     }
-    private static Instructor[] createInstructors(Classroom[] classrooms){
-        Instructor instructor = new Instructor("Afonso","afonso@hotmail.com",classrooms[0]);
-        Instructor instructor1 = new Instructor("Marina","Marina@hotmail.com",classrooms[0]);
-        Instructor instructor2 = new Instructor("Florinda","Florinda@hotmail.com",classrooms[0]);
-        Instructor instructor3 = new Instructor("Vera","Vera@hotmail.com",classrooms[0]);
-        Instructor instructor4 = new Instructor("Eduardo","Eduardo@hotmail.com",classrooms[0]);
-        Instructor instructor5 = new Instructor("Dinis","Dinis@hotmail.com",classrooms[0]);
-        Instructor instructor6 = new Instructor("Elizabete","Elizabete@hotmail.com",classrooms[0]);
-        Instructor instructor7 = new Instructor("Cláudio","Cláudio@hotmail.com",classrooms[0]);
-        Instructor instructor8 = new Instructor("Bruno","Bruno@hotmail.com",classrooms[0]);
-        Instructor instructor9 = new Instructor("Gonçalo","Gonçalo@hotmail.com",classrooms[0]);
-        Instructor instructor10 = new Instructor("Costa","Costa@hotmail.com",classrooms[0]);
+    private static Instructor[] createInstructors(Classroom[] classrooms,Schedule[] schedules){
+        Instructor instructor = new Instructor("Afonso","afonso@hotmail.com",classrooms[0],schedules);
+        Instructor instructor1 = new Instructor("Marina","Marina@hotmail.com",classrooms[0],schedules);
+        Instructor instructor2 = new Instructor("Florinda","Florinda@hotmail.com",classrooms[0],schedules);
+        Instructor instructor3 = new Instructor("Vera","Vera@hotmail.com",classrooms[0],schedules);
+        Instructor instructor4 = new Instructor("Eduardo","Eduardo@hotmail.com",classrooms[0],schedules);
+        Instructor instructor5 = new Instructor("Dinis","Dinis@hotmail.com",classrooms[0],schedules);
+        Instructor instructor6 = new Instructor("Elizabete","Elizabete@hotmail.com",classrooms[0],schedules);
+        Instructor instructor7 = new Instructor("Cláudio","Cláudio@hotmail.com",classrooms[0],schedules);
+        Instructor instructor8 = new Instructor("Bruno","Bruno@hotmail.com",classrooms[0],schedules);
+        Instructor instructor9 = new Instructor("Gonçalo","Gonçalo@hotmail.com",classrooms[0],schedules);
+        Instructor instructor10 = new Instructor("Costa","Costa@hotmail.com",classrooms[0],schedules);
          
         Instructor[] instructors= new Instructor[11];
         instructors[0] = instructor;

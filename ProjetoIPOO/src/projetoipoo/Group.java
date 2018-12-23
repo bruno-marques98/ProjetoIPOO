@@ -14,11 +14,7 @@ public class Group {
     private UC uc;
 
     public Group(UC uc,Student[] stds) {
-        if(stds.length>10){
-             students = new Student[10];
-        }else{
-            students = stds;
-        }  
+        students = stds;
         if(uc!=null){
             this.uc = uc;
         }

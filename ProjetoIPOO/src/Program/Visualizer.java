@@ -57,7 +57,7 @@ public class Visualizer {
         int firstDayOkWeek = date.getDayOfMonth();
         Schedule[] schds = new Schedule[20];
         for (Schedule schedule : agender.getSchedules()) {
-            if (schedule.getBeginning().toLocalDate().compareTo(date) >= 0 && schedule.getBeginning().toLocalDate().compareTo(date.plusDays(7)) < 0) {
+            if (schedule.getBeginning().toLocalDate().compareTo(date) > 0 && schedule.getBeginning().toLocalDate().compareTo(date.plusDays(7)) < 0) {
                 for (int j = 0; j < schds.length; j++) {
                     if (schds[j] == null) {
                         schds[j] = schedule;

@@ -19,7 +19,7 @@ public class Instructor {
     private Schedule[] schedule;
     private boolean isScheduleInserd;
     
-    public Instructor(String name, String email,Classroom room){
+    public Instructor(String name, String email,Classroom room,Schedule[] schedule){
         if(name != null){
             this.name = name;
         }else{
@@ -34,7 +34,7 @@ public class Instructor {
         if(room!= null){
             this.room  = room;
         }
-        schedule = new Schedule[10];
+        this.schedule = schedule;
         isScheduleInserd = false;       
     }
     public String getName() {
