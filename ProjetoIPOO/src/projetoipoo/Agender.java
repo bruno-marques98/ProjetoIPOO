@@ -16,8 +16,8 @@ import static java.time.temporal.ChronoUnit.WEEKS;
  * @author bruno
  */
 public class Agender {
-    private LocalDateTime startSemester;
-    private LocalDateTime endSemester;
+    private LocalDate startSemester;
+    private LocalDate endSemester;
     private boolean isSemesterPar;
     private UC[] ucs;
     private Instructor[] instructors;
@@ -30,7 +30,7 @@ public class Agender {
      * @param endSemester
      * @param isSemesterPar
      */
-    public Agender(LocalDateTime startSemester, LocalDateTime endSemester, boolean isSemesterPar) {
+    public Agender(LocalDate startSemester, LocalDate endSemester, boolean isSemesterPar) {
         this.startSemester = startSemester;
         this.endSemester = endSemester;
         this.isSemesterPar = isSemesterPar;
@@ -40,6 +40,17 @@ public class Agender {
         schedules = new Schedule[7];
     }
 
+    public Agender(LocalDate startSemester, LocalDate endSemester, boolean isSemesterPar, UC[] ucs, Instructor[] instructors, Group[] groups, Schedule[] schedules) {
+        this.startSemester = startSemester;
+        this.endSemester = endSemester;
+        this.isSemesterPar = isSemesterPar;
+        this.ucs = ucs;
+        this.instructors = instructors;
+        this.groups = groups;
+        this.schedules = schedules;
+    }
+    
+
     public Schedule[] getSchedules() {
         return schedules;
     }
@@ -48,7 +59,7 @@ public class Agender {
      *
      * @return
      */
-    public LocalDateTime getStartSemester() {
+    public LocalDate getStartSemester() {
         return startSemester;
     }
 
@@ -56,7 +67,7 @@ public class Agender {
      *
      * @return
      */
-    public LocalDateTime getEndSemester() {
+    public LocalDate getEndSemester() {
         return endSemester;
     }
 
@@ -96,7 +107,7 @@ public class Agender {
      *
      * @param startSemester
      */
-    public void setStartSemester(LocalDateTime startSemester) {
+    public void setStartSemester(LocalDate startSemester) {
         if(startSemester!=null) this.startSemester = startSemester;
     }
 
@@ -104,7 +115,7 @@ public class Agender {
      *
      * @param endSemester
      */
-    public void setEndSemester(LocalDateTime endSemester) {
+    public void setEndSemester(LocalDate endSemester) {
         if(endSemester!=null)this.endSemester = endSemester;
     }
 

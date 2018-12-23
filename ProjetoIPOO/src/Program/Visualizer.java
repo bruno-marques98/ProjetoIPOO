@@ -5,6 +5,7 @@
  */
 package Program;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import projetoipoo.Classroom;
@@ -32,13 +33,6 @@ public class Visualizer {
     private Evaluation[] evaluations;
     private Agender agender;
 
-    public Visualizer() {
-        this.instructors = new Instructor[50];
-        this.students = new Student[100];
-        this.classrooms = new Classroom[30];
-        this.evaluations = new Evaluation[25];
-        this.agender = new Agender(LocalDateTime.of(2018, 10, 1, 0, 0),LocalDateTime.of(2019,1, 30, 0, 0),false);
-    }
 
     public Visualizer(Instructor[] instructors, Student[] students, Classroom[] classrooms, Evaluation[] evaluations, Agender agender) {
         this.instructors = instructors;
@@ -59,11 +53,11 @@ public class Visualizer {
     
     
         public Schedule[] getWeekSchedule(int numberOfWeek){
-        LocalDateTime date = agender.getStartSemester().plusDays(numberOfWeek*7); 
+        LocalDate date = agender.getStartSemester().plusDays(numberOfWeek*7); 
         int firstDayOkWeek = date.getDayOfMonth();
         Schedule[] schds = new Schedule[20];
         for (Schedule schedule : agender.getSchedules()) {
-            if (schedule.getBeginning().compareTo(date) >= 0 && schedule.getBeginning().compareTo(date.plusDays(7)) < 0) {
+            if (schedule.getBeginning().toLocalDate().compareTo(date) >= 0 && schedule.getBeginning().toLocalDate().compareTo(date.plusDays(7)) < 0) {
                 for (int j = 0; j < schds.length; j++) {
                     if (schds[j] == null) {
                         schds[j] = schedule;
@@ -139,7 +133,7 @@ public class Visualizer {
         UC[] ucs = new UC[20];
         for(UC ucss : agender.getUcs()){
             for(UCClass ucClasses: ucss.getClasses()){
-                if(ucClasses.getEndClass().compareTo(agender.getEndSemester())<0){
+                if(ucClasses.getEndClass().toLocalDate().compareTo(agender.getEndSemester())<0){
                     for(int i = 0; i < ucs.length; i++){
                         if(ucs[i] != null){
                             ucs[i] = ucss;

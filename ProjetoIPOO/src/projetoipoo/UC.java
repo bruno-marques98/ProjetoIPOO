@@ -15,14 +15,16 @@ public class UC {
     private int numberOfCredits;
     private UCClass[] classes;
     private Evaluation[] evaluation;
-    
-    public UC(String UCName, String id,Evaluation[] evaluation) {
+
+    public UC(String UCName, int id, int numberOfCredits, UCClass[] classes, Evaluation[] evaluation) {
         this.UCName = UCName;
-        this.id = id;
-        this.numberOfCredits = 6;
-        this.classes = new UCClass[20];
+        this.id = UCName + id;
+        this.numberOfCredits = numberOfCredits;
+        this.classes = classes;
         this.evaluation = evaluation;
     }
+    
+  
 
     public Evaluation[] getEvaluation() {
         return evaluation;

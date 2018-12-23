@@ -81,7 +81,7 @@ public class Student {
     
     public Agender getActiveAgender(){
         for(int i = 0; i <agenders.length;i++){
-            if(agenders[i].getStartSemester().isBefore(LocalDateTime.now()) && agenders[i].getEndSemester().isAfter(LocalDateTime.now()) ){
+            if(agenders[i].getStartSemester().isBefore(LocalDate.now()) && agenders[i].getEndSemester().isAfter(LocalDate.now()) ){
                 return agenders[i];
             }
         }
