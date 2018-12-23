@@ -6,12 +6,18 @@
 package projetoipoo;
 
 /**
- *
- * @author bruno
+ * A classe ClassType implementa o tipo de aula
+ * @author Bruno_?;Gonçalo_180221046
+ * @version 
  */
 public enum ClassType {
     THEORY, PRACTICAL, LAB;
-     @Override
+
+    /**
+     * Permite obter o tipo de aula consoante as escolhas efetuados pelo utilizador
+     * @return cadeia de caractéres com o tipo da aula
+     */
+    @Override
     public String toString() {
         switch(this){
             case THEORY:

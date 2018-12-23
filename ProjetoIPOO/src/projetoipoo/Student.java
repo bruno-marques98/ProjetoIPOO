@@ -9,8 +9,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
- *
- * @author bruno
+ * A classe Student implementa a caraterização de um estudante do IPS
+ * A classe utiliza as classes LocalDate para definir a data de nascimento do aluno, Agender para definir uma lista de agendas, onde estão guardadas as agendas de cada um dos semestres do curso, e Course para definir o curso do aluno
+ * @author Bruno_?;Gonçalo_1801221046
+ * @version 
  */
 public class Student {
     private String name;
@@ -20,6 +22,13 @@ public class Student {
     private Course course;
     private Agender[] agenders;
 
+    /**
+     * Construtor que permite criar um novo aluno
+     * @param name
+     * @param birthDate
+     * @param genre
+     * @param course
+     */
     public Student(String name, LocalDate birthDate, char genre, Course course) {
         this.name = name;
         this.studentNumber++;
@@ -29,42 +38,67 @@ public class Student {
         this.agenders = new Agender[10];
     }
 
+    /**
+     * Permite obter o nome do aluno
+     * @return nome
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Permite obter o número de estudante do aluno
+     * @return número de estudante
+     */
     public int getStudentNumber() {
         return studentNumber;
     }
 
+    /**
+     * Permite obter a lista de agendas
+     * @return agendas
+     */
     public Agender[] getAgender() {
         return agenders;
     }
 
+    /**
+     * Permite obter a data de nascimento do aluno
+     * @return data
+     */
     public LocalDate getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
-
+    /**
+     * Permite obter o género do aluno
+     * @return género
+     */
     public char getGenre() {
         return genre;
     }
 
-    public void setGenre(char genre) {
-        this.genre = genre;
-    }
-
+    /**
+     * Permite obter o curso em que o aluno está inserido
+     * @return curso
+     */
     public Course getCourse() {
         return course;
     }
 
+    /**
+     * Permite modificar o curso do aluno
+     * @param course
+     */
     public void setCourse(Course course) {
         this.course = course;
     }
     
+    /**
+     * Permite adicionar uma agenda à lista de agendas já existentes
+     * @param agender
+     * @return true se for possivel adicionar a agenda, adicionando a mesma / false se não for possivel adicionar
+     */
     public boolean addAgender(Agender agender){
         for(int i = 0; i < agenders.length;i++){
             if(agenders[i] != null){
@@ -75,6 +109,10 @@ public class Student {
         return false;
     }
     
+    /**
+     * Permite obter a lista das agendas que se encontram ativas
+     * @return lista das agendas ativas
+     */
     public Agender getActiveAgender(){
         for(int i = 0; i <agenders.length;i++){
             if(agenders[i].getStartSemester().isBefore(LocalDateTime.now()) && agenders[i].getEndSemester().isAfter(LocalDateTime.now()) ){
@@ -83,6 +121,11 @@ public class Student {
         }
         return null;
     }
+
+    /**
+     * Permite adicionar uma unidade curricular à lista de agendas ativas
+     * @param uc
+     */
     public void addUC(UC uc){
         Agender ag = getActiveAgender();
         ag.addUC(uc);

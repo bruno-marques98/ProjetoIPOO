@@ -6,12 +6,18 @@
 package projetoipoo;
 
 /**
- *
- * @author bruno
+ * A classe CourseType implementa um tipo de curso
+ * Apenas estão diponiveis tipos de cursos existentes na ESTSetubal
+ * @author Bruno_?;Gonçalo_180221046
+ * @version 
  */
 public enum CourseType {
     GRADUATION, POSTGRADUATE_STUDIES, MASTER_DEGREE;
 
+    /**
+     * Permite obter o tipo de curso, numa cadeia de caractéres
+     * @return tipo de curso
+     */
     @Override
     public String toString() {
         switch(this){

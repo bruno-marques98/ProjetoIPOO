@@ -6,12 +6,17 @@
 package projetoipoo;
 
 /**
- *
- * @author bruno
+ * A classe ClassroomType implemneta o tipo da sala de aula
+ * @author Bruno_?;Gonçalo_180221046
+ * @version 
  */
 public enum ClassroomType {
     THEORY, PRACTICAL, LAB, TUTORIALS;
 
+    /**
+     * Permite obter o tipo da sala de aula consoante as escolhas efetuados pelo utilizador
+     * @return cadeia de caractéres com o tipo da sala de aula
+     */
     @Override
     public String toString() {
         String str = "" ;

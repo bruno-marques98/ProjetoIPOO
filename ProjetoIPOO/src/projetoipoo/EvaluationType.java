@@ -6,13 +6,18 @@
 package projetoipoo;
 
 /**
- *
- * @author bruno
+ * A classe EvaluationType implementa um tipo de avaliação
+ * @author Bruno_;Gonçalo_180221046 
+ * @version 
  */
 public enum EvaluationType {
     TEST, EXAM, PRESENTATION, PROJECT;
     
-         @Override
+    /**
+     * Permite obter o tipo de avaliação, numa cadeia de caractéres
+     * @return tipo de avaliação
+     */
+    @Override
     public String toString() {
         switch(this){
             case TEST:

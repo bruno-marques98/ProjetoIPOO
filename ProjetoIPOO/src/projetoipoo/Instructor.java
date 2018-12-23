@@ -8,17 +8,26 @@ package projetoipoo;
 import java.time.LocalDateTime;
 
 /**
- *
- * @author bruno
+ * A classe Instructor implementa um docente
+ * Esta classe utiliza as classes Classroom, para definir um sala onde o docente recebe os alunos, e Schedule para definir o horário de atendimento do docente
+ * @author Bruno_?;Gonçalo_180221046
+ * @version 
  */
 public class Instructor {
-        private String name;
+    private String name;
     private int id;
     private String email;
     private Classroom room;
     private Schedule[] schedule;
     private boolean isScheduleInserd;
     
+    /**
+     * Construtor que cria um docente com um horário de atendimento ainda não inserido
+     * @param name
+     * @param id-número mecanográfico do docente
+     * @param email
+     * @param room
+     */
     public Instructor(String name, int id, String email,Classroom room){
         if(name != null){
             this.name = name;
@@ -41,29 +50,70 @@ public class Instructor {
         schedule = new Schedule[10];
         isScheduleInserd = false;       
     }
+
+    /**
+     * Permite ober o nome do docente
+     * @return nome
+     */
     public String getName() {
         return name;
     }
+
+    /**
+     * Permite obter o número mecanográfico do docente
+     * @return número
+     */
     public int getId() {
         return id;
     }
+
+    /**
+     * Permite obter o e-mail do docente
+     * @return email
+     */
     public String getEmail() {
         return email;
     }
+
+    /**
+     * Permite obter a sala em que o docente recebe os estudantes
+     * @return sala
+     */
     public Classroom getRoom() {
         return room;
     }
+
+    /**
+     *
+     * @return
+     */
     public Schedule[] getSchedule() {
         return schedule;
     }
+
+    /**
+     * Permite saber se o horário está inserido ou não
+     * @return true se o horário estiver inserido / false se não estiver inserido
+     */
     public boolean isIsScheduleInserd() {
         return isScheduleInserd;
     }
+
+    /**
+     * Permite modificar a sala onde o docente recebe os alunos
+     * @param room
+     */
     public void setClassroom(Classroom room){
         if(room!= null){
             this.room  = room;
         }
     }
+
+    /**
+     * Permite adicionar um horário de atendimento ao docente
+     * @param startDate
+     * @param endDate
+     */
     public void addAttendence(LocalDateTime startDate, LocalDateTime endDate){
         for(int i = 0; i < schedule.length;i++){
             if(schedule[i] == null){
@@ -72,6 +122,11 @@ public class Instructor {
             }
         }
     }
+
+    /**
+     * Permite obter a informação do docente, numa cadeia de caractéres, mostrando também esta no ecrã
+     * @return cadeia de caractéres
+     */
     public String toString(){
         String str = "Instructor: "+ name+"\n";
         str+="Id: "+ id+"\n";

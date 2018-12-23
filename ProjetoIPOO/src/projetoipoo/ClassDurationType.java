@@ -6,12 +6,17 @@
 package projetoipoo;
 
 /**
- *
- * @author bruno
+ * A classe ClassDurationType implementa o tempo de duração das aulas
+ * @author Bruno_?;Gonçalo_180221046
+ * @version 
  */
 public enum ClassDurationType {
     HOUR, HOUR_AND_HALF, TWO_HOURS, FOUR_HOURS;
     
+    /**
+     * Permite obter o tempo de duração da aula consoante as escolhas efetuadas pelo utilizador
+     * @return numero de horas
+     */
     public double getDuration(){
         switch(this){
             case HOUR:

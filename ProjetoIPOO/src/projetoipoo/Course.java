@@ -6,8 +6,11 @@
 package projetoipoo;
 
 /**
- *
- * @author bruno
+ * A classe Course implementa a escolha de um curso
+ * Estão apenas disponiveis para a escolha do cursos da ESTSetubal
+ * A classe utiliza a classe CourseType para definir o tipo de curso
+ * @author Bruno_?;Gonçalo_180221046
+ * @version 
  */
 public class Course {
     private String name;
@@ -15,6 +18,13 @@ public class Course {
     private String initials;
     private int credits;
 
+    /**
+     * Construtor da classe que permite criar um curso, mas apenas cursos existentes na ESTSetubal
+     * @param name
+     * @param type
+     * @param initials-inicias do curso
+     * @param credits-créditos de cada curso
+     */
     public Course(String name, CourseType type, String initials, int credits) {
        this.type = type;
         if(type == type.GRADUATION){
@@ -111,38 +121,10 @@ public class Course {
     }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public CourseType getType() {
-        return type;
-    }
-
-    public void setType(CourseType type) {
-        this.type = type;
-    }
-
-    public String getInitials() {
-        return initials;
-    }
-
-    public void setInitials(String initials) {
-        this.initials = initials;
-    }
-
-    public int getCredits() {
-        return credits;
-    }
-
-    public void setCredits(int credits) {
-        this.credits = credits;
-    }
-
+    /**
+     * Permite obter uma cadeia de caractéres com as informações do curso(nome,iniciais e creditos)
+     * @return cadeia de caractéres
+     */
     @Override
     public String toString() {
         return type + "\n" + "Course{" + name + ", Initials: " + initials + ", Credits: " + credits ;

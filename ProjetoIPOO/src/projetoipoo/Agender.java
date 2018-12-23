@@ -9,8 +9,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 /**
- *
- * @author bruno
+ * Agender implementa uma agenda de um aluno para cada semestre
+ * Esta classe utiliza a classe LocalDateTime para indicar o inicio e o fim do semestre e uma coleção de unidades corriulares e uma coleção de grupos
+ * @author bruno_?;Gonçalo_180221046
+ * @version 
  */
 public class Agender {
     private LocalDateTime startSemester;
@@ -21,7 +23,7 @@ public class Agender {
     private Group[] groups;
 
     /**
-     *
+     * Construtor da classe Agender que permite criar uma agenda com uma data do inicio e fim do semestre
      * @param startSemester
      * @param endSemester
      * @param isSemesterPar
@@ -36,47 +38,47 @@ public class Agender {
     }
 
     /**
-     *
-     * @return
+     * Permite obter a data do inicio do semestre
+     * @return data do inico do semestre
      */
     public LocalDateTime getStartSemester() {
         return startSemester;
     }
 
     /**
-     *
-     * @return
+     * Permite obter a data do fim do semestre
+     * @return data do fim do semestre
      */
     public LocalDateTime getEndSemester() {
         return endSemester;
     }
 
     /**
-     *
-     * @return
+     * Permite obter se o semestre é par ou impar
+     * @return true se o semestre for par / false se este for impar
      */
     public boolean isIsSemesterPar() {
         return isSemesterPar;
     }
 
     /**
-     *
-     * @return
+     * Permite obter a lista de unidades curriculares na agenda do aluno
+     * @return ucs
      */
     public UC[] getUcs() {
         return ucs;
     }
 
     /**
-     *
-     * @return
+     * Permite obter a lista de docentes que são responsáveis por lecionar as unidades curriculares do aluno
+     * @return docentes
      */
     public Instructor[] getInstructors() {
         return instructors;
     }
 
     /**
-     *
+     * Permite obter a lista de grupos em que os alunos participam
      * @return
      */
     public Group[] getGroups() {
@@ -84,7 +86,7 @@ public class Agender {
     }
 
     /**
-     *
+     * Permite definir uma nova data para o inicio do semestre
      * @param startSemester
      */
     public void setStartSemester(LocalDateTime startSemester) {
@@ -92,7 +94,7 @@ public class Agender {
     }
 
     /**
-     *
+     * Permite definir uma nova data para o fim do semestre
      * @param endSemester
      */
     public void setEndSemester(LocalDateTime endSemester) {
@@ -100,7 +102,7 @@ public class Agender {
     }
 
     /**
-     *
+     *  Permite modificar a paridade do semestre
      * @param isSemesterPar
      */
     public void setIsSemesterPar(boolean isSemesterPar) {
@@ -108,7 +110,7 @@ public class Agender {
     }
     
     /**
-     *
+     * Permite modificar uma nova coleção de grupos
      * @param groups
      */
     public void setGroup(Group[] groups){
@@ -118,9 +120,9 @@ public class Agender {
     }
 
     /**
-     *
+     * Permite adicionar uma unidade curricular à coleção de unidades curriculares já existente
      * @param uc
-     * @return
+     * @return true se for possivel adicionar uma unidade curricular, adicionando a mesma / false se não for possivel adicionar
      */
     public boolean addUC(UC uc){
         if(uc!=null){
@@ -135,9 +137,9 @@ public class Agender {
     }
 
     /**
-     *
+     * Permite adicionar um grupo à coleção de grupos já existente
      * @param group
-     * @return
+     * @return true se for possivel adicionar um grupo / false se não for possivel
      */
     public boolean addGroup(Group group){
         if(group != null){
@@ -151,7 +153,7 @@ public class Agender {
     }
 
     /**
-     *
+     * Mostra no ecrã uma mensagem com a coleção dos grupos
      */
     public void showGroup(){
         for(int i = 0; i < groups.length; i++){
@@ -162,8 +164,8 @@ public class Agender {
     }
     
     /**
-     *
-     * @return
+     * Permite obter o total de créditos de todas as unidades curriculares existentes
+     * @return total dos creditos
      */
     public int totalCredits(){
         int totalCredits = 0;
@@ -175,8 +177,8 @@ public class Agender {
     }
 
     /**
-     *
-     * @return
+     * Permite obter o número total de horas de todas as unidades curriculares existentes
+     * @return total de horas
      */
     public double totalHours(){
         long totalMinutes=0;

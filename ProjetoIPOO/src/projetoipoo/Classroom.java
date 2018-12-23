@@ -6,8 +6,9 @@
 package projetoipoo;
 
 /**
- *
- * @author bruno
+ * Classroom implementa uma sala 
+ * @author bruno_?;Gonçalo_180221046
+ * @version 
  */
 public class Classroom {
     String name;
@@ -15,11 +16,17 @@ public class Classroom {
     int roomNumber;
     int capacity;
     
+    /**
+     * Construtor da classe Classroom, que permite criar uma nova sala 
+     * @param zone
+     * @param roomNumber
+     * @param capacity
+     */
     public Classroom(char zone, int roomNumber, int capacity){
-        if(zone >='A' || zone <= 'Z'){
-            this.zone = zone;
+        if(zone >='A' || zone <= 'F'){
+            this.zone = zone; 
         }
-        if(roomNumber >0){
+        if(roomNumber >0 && roomNumber <99){
             this.roomNumber = roomNumber;
         }
         this.name = zone + String.valueOf(roomNumber);
@@ -28,27 +35,51 @@ public class Classroom {
         }
     }
     
+    /**
+     * Permite obter o nome da sala 
+     * @return nome da sala 
+     */
     public String getName(){
         return name;
     }
+
+    /**
+     * Permite obter a capacidade de alunos da sala 
+     * @return capacidade de alunos
+     */
     public int getCapacity(){
         return capacity;
     }
+
+    /**
+     * Permite modificar o nome da sala
+     * @param zone
+     * @param roomNumber
+     */
     public void setName(char zone, int roomNumber){
-        if(zone >='A' || zone <= 'Z'){
+        if(zone >='A' || zone <= 'F'){
             this.zone = zone;
         }
-        if(roomNumber >0){
+        if(roomNumber >0 && roomNumber <99){
             this.roomNumber = roomNumber;
         }
         this.name = zone + String.valueOf(roomNumber);
     }
+
+    /**
+     * Permite modificar a capacidade da sala
+     * @param capacity
+     */
     public void setCapacity(int capacity){
         if(capacity >= 0){
             this.capacity = capacity;
         }
     }
     
+    /**
+     * Permite obter uma cadeia de caractéres onde mostre as informações da sala (nome,capacidade)
+     * @return cadeia de caractéres com a informção da sala
+     */
     public String toString(){
         String str = "";
         str = "Identificação da sala: "+name+"\n";
