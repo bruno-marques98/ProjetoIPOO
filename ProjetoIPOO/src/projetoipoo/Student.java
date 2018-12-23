@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * A classe Student implementa a caraterização de um estudante do IPS
  * A classe utiliza as classes LocalDate para definir a data de nascimento do aluno, Agender para definir uma lista de agendas, onde estão guardadas as agendas de cada um dos semestres do curso, e Course para definir o curso do aluno
- * @author Bruno_?;Gonçalo_1801221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class Student {

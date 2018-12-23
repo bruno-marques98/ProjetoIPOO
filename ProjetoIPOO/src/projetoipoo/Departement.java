@@ -8,7 +8,7 @@ package projetoipoo;
 /**
  * A classe Department implementa uma entidade que agrega os docentes de uma mesma área cientifica
  * Esta classe utiliza as classes Course para definir uma lista de cursos e Instructor para defirnir uma lisa de docentes de uma mesma área cientifica
- * @author Bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class Departement {

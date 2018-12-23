@@ -8,7 +8,7 @@ package projetoipoo;
 /**
  * A class Group implementa um grupo de alunos que se juntam para fazer trabalhos no âmbito de determinadas unidades curriculares
  * Esta classe utiliza as classes Student para definir uma coleção de estudantes e a UC para definir uma unidade curricular
- * @author Bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class Group {

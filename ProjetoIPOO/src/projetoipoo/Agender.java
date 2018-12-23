@@ -14,7 +14,7 @@ import static java.time.temporal.ChronoUnit.WEEKS;
 /**
  * Agender implementa uma agenda de um aluno para cada semestre
  * Esta classe utiliza a classe LocalDateTime para indicar o inicio e o fim do semestre e uma coleção de unidades corriulares e uma coleção de grupos
- * @author bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class Agender {
@@ -32,8 +32,6 @@ public class Agender {
      * @param endSemester
      * @param isSemesterPar
      */
-
-
     public Agender(LocalDate startSemester, LocalDate endSemester, boolean isSemesterPar, UC[] ucs, Instructor[] instructors, Group[] groups, Schedule[] schedules) {
         this.startSemester = startSemester;
         this.endSemester = endSemester;

@@ -12,7 +12,7 @@ import java.time.temporal.ChronoUnit;
 /**
  * A classe UCClass implementa uma aula de uma determinada unidade curricular
  * Esta classe utiliza as classes LocalDateTime para definir a data de inicio e fim da aula, Instructor para definir o docente responsável por lecionar a unidade curricular,Classroom para definir uma sala de aula para 
- * @author Bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class UCClass {

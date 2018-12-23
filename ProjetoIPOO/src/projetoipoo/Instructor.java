@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 /**
  * A classe Instructor implementa um docente
  * Esta classe utiliza as classes Classroom, para definir um sala onde o docente recebe os alunos, e Schedule para definir o horário de atendimento do docente
- * @author Bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class Instructor {
@@ -24,7 +24,6 @@ public class Instructor {
     /**
      * Construtor que cria um docente com um horário de atendimento ainda não inserido
      * @param name
-     * @param id-número mecanográfico do docente
      * @param email
      * @param room
      */

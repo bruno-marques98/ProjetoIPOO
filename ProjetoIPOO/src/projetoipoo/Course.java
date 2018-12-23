@@ -9,7 +9,7 @@ package projetoipoo;
  * A classe Course implementa a escolha de um curso
  * Estão apenas disponiveis para a escolha do cursos da ESTSetubal
  * A classe utiliza a classe CourseType para definir o tipo de curso
- * @author Bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class Course {
@@ -23,8 +23,6 @@ public class Course {
      * Construtor da classe que permite criar um curso, mas apenas cursos existentes na ESTSetubal
      * @param name
      * @param type
-     * @param initials-inicias do curso
-     * @param credits-créditos de cada curso
      */
     public Course(String name, CourseType type) {
        this.type = type;

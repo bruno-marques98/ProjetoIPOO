@@ -7,7 +7,7 @@ package projetoipoo;
 
 /**
  * A classe EvaluationType implementa um tipo de avaliação
- * @author Bruno_;Gonçalo_180221046 
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public enum EvaluationType {

@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * A classe Schedule implementa um horário que permite representar um determinado compromisso ou uma determinada avaliação
  * A classe utiliz a classe LocalDateTime para definir a data do inicio e o fim do compromisso ou avaliação
- * @author Bruno_?;Gonçalo_180221046        
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class Schedule {

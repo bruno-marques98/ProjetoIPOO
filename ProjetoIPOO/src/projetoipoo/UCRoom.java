@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * A classe UCRoom implementa uma sala de aula e o seu tipo onde vai ser lecionada uma determinada unidade curricular, com um respetivo docente responsável pela UC e uma determinada data em que esta vai ser lecionada
  * Esta classe utiliza as classes LocalDateTime para definir uma data para a unidade curricular ser lecionada, Instructor para defirnir o responsável pela unidade cirricular a ser lecionade, Room e RoomType , para definir uma sala de aula e o tipo da mesma disponivel para a lecionação da UC
- * @author Bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class UCRoom {

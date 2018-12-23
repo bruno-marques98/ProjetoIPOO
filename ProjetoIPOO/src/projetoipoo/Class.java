@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * Class implementa uma aula
  * Esta classe utiliza a classe ClassType para defirnir o tipo de aula, a classe ClassDurationTime para definir o tempo de duração da aula, a classe Classroom para definir uma sala, e,por fim, a classe Instructor para definir o docente reponsavél pela aula
- * @author bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class Class {

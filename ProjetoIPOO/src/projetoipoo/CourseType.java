@@ -8,7 +8,7 @@ package projetoipoo;
 /**
  * A classe CourseType implementa um tipo de curso
  * Apenas estão diponiveis tipos de cursos existentes na ESTSetubal
- * @author Bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public enum CourseType {

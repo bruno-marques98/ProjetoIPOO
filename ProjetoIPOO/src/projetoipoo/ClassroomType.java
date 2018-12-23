@@ -7,7 +7,7 @@ package projetoipoo;
 
 /**
  * A classe ClassroomType implemneta o tipo da sala de aula
- * @author Bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public enum ClassroomType {

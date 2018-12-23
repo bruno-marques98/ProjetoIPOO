@@ -8,7 +8,7 @@ package projetoipoo;
 /**
  * A classe UC implementa uma unidade curricular
  * Esta classe utiliza a UCClass para definir uma lista de aulas dessa unidade curricular
- * @author Bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class UC {

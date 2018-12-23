@@ -25,11 +25,12 @@ import projetoipoo.UCClass;
 
 /**
  *
- * @author bruno
+ * @author bruno_170221059 Gonçalo_180221046
  */
 public class Program {
 
     /**
+     * This is a testing method
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -65,7 +66,10 @@ public class Program {
         }
          
     }
-    
+    /**
+     * Cria salas de aula
+     * @return Classrooms
+     */ 
     private static Classroom[] createClassrooms(){
         Classroom class1 = new Classroom('A',101,50);
         Classroom class2 = new Classroom('A',102,50);
@@ -90,6 +94,11 @@ public class Program {
          
         return classrooms;
     }
+     /**
+     * Cria várias avaliações
+     * @param classrooms
+     * @return evaluations
+     */ 
     private static Evaluation[] createEvaluations(Classroom[] classrooms){
         Evaluation evaluation = new Evaluation(EvaluationType.TEST,"Teste",classrooms[0]);
         Evaluation evaluation1 = new Evaluation(EvaluationType.TEST,"Teste",classrooms[6]);
@@ -142,6 +151,10 @@ public class Program {
         evaluations[22] = evaluation;
         return evaluations;
     }    
+     /**
+     * Cria horários
+     * @return schedules
+     */ 
     private static Schedule[] createSchedules(){
         Schedule schedule = new Schedule(LocalDateTime.of(2018,11,12,12, 0),2.0);
         Schedule schedule1 = new Schedule(LocalDateTime.of(2018,11,13,12, 0),2.0);
@@ -195,6 +208,12 @@ public class Program {
         schedules[23] = schedule23;
         return schedules;
     }
+     /**
+     * Cria professores
+     * @param classrooms
+     * @param schedules
+     * @return instructors
+     */ 
     private static Instructor[] createInstructors(Classroom[] classrooms,Schedule[] schedules){
         Instructor instructor = new Instructor("Afonso","afonso@hotmail.com",classrooms[0],schedules);
         Instructor instructor1 = new Instructor("Marina","Marina@hotmail.com",classrooms[0],schedules);
@@ -222,6 +241,10 @@ public class Program {
         instructors[10] = instructor10;
         return instructors;
     }
+     /**
+     * Cria cursos
+     * @return courses
+     */ 
     private static Course[] createCourses(){
         Course leaci = new Course("Engenharia de Automação, Controlo e Instrumentação",CourseType.GRADUATION);
         Course leec = new Course("Engenharia Eletrotécnica e de Computadores",CourseType.GRADUATION);
@@ -260,6 +283,11 @@ public class Program {
         return courses;
         
     }
+         /**
+     * Cria alunos
+     * @param courses
+     * @return students
+     */ 
     private static Student[] createStudents(Course[] courses){
         Student student = new Student("Afonso",LocalDate.of(1998,10,10),'H',courses[0]);
         Student student1 = new Student("Ana",LocalDate.of(1997,1,10),'F',courses[1]);
@@ -315,6 +343,12 @@ public class Program {
         students[24] = student24;
         return students;
     }
+         /**
+     * Cria aulas  
+     * @param instructors
+     * @param classrooms
+     * @return ucClasses
+     */ 
     private static UCClass[] createUCClasses(Instructor[] instructors,Classroom[] classrooms){
         UCClass ucClass = new UCClass(LocalDateTime.of(2018,11,4,10,30),LocalDateTime.of(2018,11,4,12,0),instructors[0],classrooms[0],ClassroomType.THEORY);
         UCClass ucClass1 = new UCClass(LocalDateTime.of(2018,12,4,10,30),LocalDateTime.of(2018,12,4,12,0),instructors[5],classrooms[2],ClassroomType.LAB);
@@ -342,6 +376,12 @@ public class Program {
         classes[10] = ucClass10;
         return classes;
     }
+     /**
+     * Cria UCs
+     * @param classes
+     * @param evaluations
+     * @return ucs
+     */ 
     private static UC[] createUcs(UCClass[] classes,Evaluation[] evaluations){
         UC uc = new UC("Matemática",1,6,classes,evaluations);
         UC uc1 = new UC("IPOO",2,6,classes,evaluations);
@@ -361,6 +401,12 @@ public class Program {
         ucs[6] = uc6;
         return ucs;
     }
+    /**
+     * Cria grupos
+     * @param ucs
+     * @param students
+     * @return groups
+     */ 
     private static Group[] createGroups(UC[] ucs,Student[] students){
         Group group = new Group(ucs[0],students);
         Group group1 = new Group(ucs[2],students);

@@ -7,7 +7,7 @@ package projetoipoo;
 
 /**
  * Classroom implementa uma sala 
- * @author bruno_?;Gonçalo_180221046
+ * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
 public class Classroom {

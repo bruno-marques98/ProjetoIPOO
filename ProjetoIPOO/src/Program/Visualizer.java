@@ -24,7 +24,7 @@ import projetoipoo.UCClass;
 
 /**
  *
- * @author bruno
+ * @author bruno_170221059 Gonçalo_180221046
  */
 public class Visualizer {
     private Instructor[] instructors;
@@ -42,7 +42,11 @@ public class Visualizer {
         this.agender = agender;
     }
     
-    
+        /**
+     * Permite ver os grupos de um estudante
+     * @param studentNumber
+     * @param groups
+     */
     public void showGroups(int studentNumber, Group[] groups){
          for(Group group : groups){
              if(group.containsStudent(studentNumber)){
@@ -50,9 +54,12 @@ public class Visualizer {
              }
          }
     }
-    
-    
-        public Schedule[] getWeekSchedule(int numberOfWeek){
+    /**
+     * Permite obter o horário de uma semana
+     * @param numberOfWeek
+     * @return schedule
+     */    
+    public Schedule[] getWeekSchedule(int numberOfWeek){
         LocalDate date = agender.getStartSemester().plusDays(numberOfWeek*7); 
         int firstDayOkWeek = date.getDayOfMonth();
         Schedule[] schds = new Schedule[20];
@@ -67,7 +74,12 @@ public class Visualizer {
         }
         return schds; 
     }
-    
+    /**
+     * Permite obter o horário de um dia
+     * @param dayOfMonth
+     * @param month
+     * @return schedule
+     */ 
     public Schedule[] getDaySchedule(int dayOfMonth, int month){
         Schedule[] schd = new Schedule[10];
         for (Schedule schedule : agender.getSchedules()) {
@@ -81,7 +93,11 @@ public class Visualizer {
         }
         return schd;
     }
-    
+    /**
+     * Permite obter as avaliações de uma UC
+     * @param uc
+     * @return evaluations
+     */ 
     public Evaluation[] getEvaluations(UC uc){
         Evaluation[] evaluations = new Evaluation[10];
         for(UC uC : agender.getUcs()){
@@ -100,7 +116,11 @@ public class Visualizer {
         }
         return evaluations;
     }
-    
+    /**
+     * Permite obter o horário de uma semana
+     * @param ucId 
+     * @return schedule
+     */ 
     public Schedule[] getInstructorsSchedule(String ucId){
         Schedule[] schd = new Schedule[20];
         for(UC uc : agender.getUcs()){
@@ -114,6 +134,11 @@ public class Visualizer {
         }
         return schd;
     }  
+    /**
+     * Permite obter as aulas de uma sala
+     * @param classroomName
+     * @return UCClasses
+     */ 
     public UCClass[] getClasses(String classroomName){
         UCClass[] ucClasses = new UCClass[20]; 
         for(UC uc : agender.getUcs()){
@@ -129,6 +154,10 @@ public class Visualizer {
         }
         return ucClasses;
     }
+    /**
+     * Permite obter as UCs
+     * @return UCs
+     */ 
     public UC[] getUCs(){
         UC[] ucs = new UC[20];
         for(UC ucss : agender.getUcs()){
