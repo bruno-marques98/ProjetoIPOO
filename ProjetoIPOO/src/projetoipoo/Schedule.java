@@ -28,17 +28,13 @@ public class Schedule {
         this.duration = 90;
         this.ending = LocalDateTime.now().plusMinutes(90);
     }
-<<<<<<< HEAD
 
     /**
      * Construtor que permite criar um horãrio com uma data especifica e com uma duração pretendida
      * @param date
      * @param duration
      */
-    public Schedule(LocalDateTime date, int duration){
-=======
     public Schedule(LocalDateTime date, double duration){
->>>>>>> f6e7602cf09ed8ddaddc1c4b516fa89ea4cf53b2
         if(date != null){
             this.beginning = date;
         }
@@ -80,16 +76,12 @@ public class Schedule {
     public LocalDateTime getEnding(){
         return this.ending;
     }
-<<<<<<< HEAD
 
     /**
      * Permite obter a duração do compromisso ou avaliação
      * @return duração
      */
-    public int getDuration(){
-=======
     public double getDuration(){
->>>>>>> f6e7602cf09ed8ddaddc1c4b516fa89ea4cf53b2
         return this.duration;
     }
 
@@ -112,16 +104,12 @@ public class Schedule {
             this.ending = data;
         }
     }
-<<<<<<< HEAD
 
     /**
      * Permite modificar a duração do compromisso ou avaliação
      * @param duration
      */
-    public void setDuration(int duration){
-=======
     public void setDuration(double duration){
->>>>>>> f6e7602cf09ed8ddaddc1c4b516fa89ea4cf53b2
         if(duration >0){
             this.duration = duration;
         }

@@ -18,7 +18,7 @@ public class Course {
     private String initials;
     private int credits;
 
-<<<<<<< HEAD
+
     /**
      * Construtor da classe que permite criar um curso, mas apenas cursos existentes na ESTSetubal
      * @param name
@@ -26,10 +26,7 @@ public class Course {
      * @param initials-inicias do curso
      * @param credits-créditos de cada curso
      */
-    public Course(String name, CourseType type, String initials, int credits) {
-=======
     public Course(String name, CourseType type) {
->>>>>>> f6e7602cf09ed8ddaddc1c4b516fa89ea4cf53b2
        this.type = type;
         if(type == type.GRADUATION){
                 if(name != null){

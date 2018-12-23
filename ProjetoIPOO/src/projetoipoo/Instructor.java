@@ -15,17 +15,12 @@ import java.time.LocalDateTime;
  */
 public class Instructor {
     private String name;
-<<<<<<< HEAD
-    private int id;
-=======
     private int id = 0;
->>>>>>> f6e7602cf09ed8ddaddc1c4b516fa89ea4cf53b2
     private String email;
     private Classroom room;
     private Schedule[] schedule;
     private boolean isScheduleInserd;
     
-<<<<<<< HEAD
     /**
      * Construtor que cria um docente com um horário de atendimento ainda não inserido
      * @param name
@@ -33,10 +28,8 @@ public class Instructor {
      * @param email
      * @param room
      */
-    public Instructor(String name, int id, String email,Classroom room){
-=======
+
     public Instructor(String name, String email,Classroom room,Schedule[] schedule){
->>>>>>> f6e7602cf09ed8ddaddc1c4b516fa89ea4cf53b2
         if(name != null){
             this.name = name;
         }else{

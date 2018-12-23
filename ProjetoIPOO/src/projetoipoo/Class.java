@@ -21,23 +21,20 @@ public class Class {
     private Instructor instructor;
     private Schedule schedule;
 
-<<<<<<< HEAD
     /**
      * Construtor da classe Class,que permite criar uma aula, com um determinado tipo, duração, sala e docente
      * @param type
      * @param duration
      * @param classroom
      * @param instructor
+     * @param date
      */
-    public Class(ClassType type, ClassDurationType duration, Classroom classroom, Instructor instructor) {
-=======
     public Class(ClassType type, ClassDurationType duration, Classroom classroom, Instructor instructor,LocalDateTime date) {
->>>>>>> f6e7602cf09ed8ddaddc1c4b516fa89ea4cf53b2
         this.type = type;
         this.duration = duration;
         this.classroom = classroom;
         this.instructor = instructor;
-        schedule = new Schedule(date,duration.getDuration()); 
+        schedule = new Schedule(date,date.plusHours((long)duration.getDuration())); 
     }
 
     /**
@@ -103,17 +100,11 @@ public class Class {
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
     }
-    
 
-<<<<<<< HEAD
     /**
      * Permite obter uma cadeia de caractéres com a informação sobre a aula (tipo,duração,sala,docente)
      * @return cadeia de caractéres 
      */
-=======
-    
->>>>>>> f6e7602cf09ed8ddaddc1c4b516fa89ea4cf53b2
-    @Override
     public String toString() {
         return "Class{" + "type=" + type + ", duration=" + duration.toString() + ", classroom=" + classroom + ", " + instructor.toString() + '}';
     }

@@ -16,15 +16,12 @@ public class Evaluation {
     private EvaluationType type;
     private String description;
     private Classroom classroom;
-<<<<<<< HEAD
 
     /**
      * Construtor que cria uma avaliação com um determinado tipo
      * @param type
      */
-=======
     private LocalDateTime date;
->>>>>>> f6e7602cf09ed8ddaddc1c4b516fa89ea4cf53b2
     public Evaluation(EvaluationType type) {
         this.type = type;
     }
