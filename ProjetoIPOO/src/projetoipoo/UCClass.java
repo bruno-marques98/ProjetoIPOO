@@ -21,6 +21,7 @@ public class UCClass {
     private Instructor instructor;
     private Classroom room;
     private ClassroomType classroomType;
+    
 
     /**
      * Construtor que cria uma aula de uma determinada UC

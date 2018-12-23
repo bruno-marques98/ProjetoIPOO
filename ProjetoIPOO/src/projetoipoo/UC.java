@@ -16,6 +16,7 @@ public class UC {
     private String id;
     private int numberOfCredits;
     private UCClass[] classes;
+<<<<<<< HEAD
     
     /**
      * Construtor que permite criar uma determinada unidade curricular 
@@ -23,11 +24,24 @@ public class UC {
      * @param id
      */
     public UC(String UCName, String id) {
+=======
+    private Evaluation[] evaluation;
+
+    public UC(String UCName, int id, int numberOfCredits, UCClass[] classes, Evaluation[] evaluation) {
+>>>>>>> f6e7602cf09ed8ddaddc1c4b516fa89ea4cf53b2
         this.UCName = UCName;
-        this.id = id;
-        this.numberOfCredits = 6;
-        this.classes = new UCClass[20];
+        this.id = UCName + id;
+        this.numberOfCredits = numberOfCredits;
+        this.classes = classes;
+        this.evaluation = evaluation;
     }
+    
+  
+
+    public Evaluation[] getEvaluation() {
+        return evaluation;
+    }
+    
 
     /**
      * Permite obter a lista de aulas 

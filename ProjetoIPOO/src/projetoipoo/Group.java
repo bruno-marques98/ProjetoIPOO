@@ -21,11 +21,7 @@ public class Group {
      * @param stds-estudantes
      */
     public Group(UC uc,Student[] stds) {
-        if(stds.length>10){
-             students = new Student[10];
-        }else{
-            students = stds;
-        }  
+        students = stds;
         if(uc!=null){
             this.uc = uc;
         }
@@ -73,6 +69,24 @@ public class Group {
      */
     public Student[] getStudents(){
         return students;
+    }
+    
+    public boolean containsStudent(int studentNumber){
+        for(Student student : students){
+            if(student.getStudentNumber() == studentNumber){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    public String toString() {
+        String txt = "UC: " + uc.getUCName();
+        for(Student std : students){
+            txt+= std.toString() + "\n";
+        }
+        return txt;
     }
     
 }

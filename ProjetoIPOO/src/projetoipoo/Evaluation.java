@@ -5,6 +5,8 @@
  */
 package projetoipoo;
 
+import java.time.LocalDateTime;
+
 /**
  * A classe Evaluation implementa uma avaliação
  * @author Bruno_?;Gonçalo_180221046
@@ -14,11 +16,15 @@ public class Evaluation {
     private EvaluationType type;
     private String description;
     private Classroom classroom;
+<<<<<<< HEAD
 
     /**
      * Construtor que cria uma avaliação com um determinado tipo
      * @param type
      */
+=======
+    private LocalDateTime date;
+>>>>>>> f6e7602cf09ed8ddaddc1c4b516fa89ea4cf53b2
     public Evaluation(EvaluationType type) {
         this.type = type;
     }
@@ -33,6 +39,7 @@ public class Evaluation {
         this.type = type;
         this.description = description;
         this.classroom = classroom;
+        this.date = LocalDateTime.now();
     }
     
     /**
@@ -42,4 +49,9 @@ public class Evaluation {
     public void addDescription(String description){
         this.description = description;  
     }
+
+    public LocalDateTime getDate() {
+        return date;
+    }
+    
 }

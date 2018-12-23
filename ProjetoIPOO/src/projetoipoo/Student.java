@@ -33,7 +33,11 @@ public class Student {
         this.name = name;
         this.studentNumber++;
         this.birthDate = birthDate;
-        this.genre = genre;
+        if(genre == 'H' || genre == 'F'){
+             this.genre = genre;
+        }else{
+            this.genre = 'H';
+        }
         this.course = course;
         this.agenders = new Agender[10];
     }
@@ -115,7 +119,7 @@ public class Student {
      */
     public Agender getActiveAgender(){
         for(int i = 0; i <agenders.length;i++){
-            if(agenders[i].getStartSemester().isBefore(LocalDateTime.now()) && agenders[i].getEndSemester().isAfter(LocalDateTime.now()) ){
+            if(agenders[i].getStartSemester().isBefore(LocalDate.now()) && agenders[i].getEndSemester().isAfter(LocalDate.now()) ){
                 return agenders[i];
             }
         }

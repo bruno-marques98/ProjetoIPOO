@@ -7,6 +7,9 @@ package projetoipoo;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import static java.time.temporal.ChronoUnit.DAYS;
+import static java.time.temporal.ChronoUnit.WEEKS;
 
 /**
  * Agender implementa uma agenda de um aluno para cada semestre
@@ -15,12 +18,13 @@ import java.time.LocalDateTime;
  * @version 
  */
 public class Agender {
-    private LocalDateTime startSemester;
-    private LocalDateTime endSemester;
+    private LocalDate startSemester;
+    private LocalDate endSemester;
     private boolean isSemesterPar;
     private UC[] ucs;
     private Instructor[] instructors;
     private Group[] groups;
+    private Schedule[] schedules;
 
     /**
      * Construtor da classe Agender que permite criar uma agenda com uma data do inicio e fim do semestre
@@ -28,20 +32,28 @@ public class Agender {
      * @param endSemester
      * @param isSemesterPar
      */
-    public Agender(LocalDateTime startSemester, LocalDateTime endSemester, boolean isSemesterPar) {
+
+
+    public Agender(LocalDate startSemester, LocalDate endSemester, boolean isSemesterPar, UC[] ucs, Instructor[] instructors, Group[] groups, Schedule[] schedules) {
         this.startSemester = startSemester;
         this.endSemester = endSemester;
         this.isSemesterPar = isSemesterPar;
-        ucs = new UC[10];
-        instructors = new Instructor[10];
-        groups = new Group[10];
+        this.ucs = ucs;
+        this.instructors = instructors;
+        this.groups = groups;
+        this.schedules = schedules;
     }
+    
 
+    public Schedule[] getSchedules() {
+        return schedules;
+    }
+    
     /**
      * Permite obter a data do inicio do semestre
      * @return data do inico do semestre
      */
-    public LocalDateTime getStartSemester() {
+    public LocalDate getStartSemester() {
         return startSemester;
     }
 
@@ -49,7 +61,7 @@ public class Agender {
      * Permite obter a data do fim do semestre
      * @return data do fim do semestre
      */
-    public LocalDateTime getEndSemester() {
+    public LocalDate getEndSemester() {
         return endSemester;
     }
 
@@ -89,7 +101,7 @@ public class Agender {
      * Permite definir uma nova data para o inicio do semestre
      * @param startSemester
      */
-    public void setStartSemester(LocalDateTime startSemester) {
+    public void setStartSemester(LocalDate startSemester) {
         if(startSemester!=null) this.startSemester = startSemester;
     }
 
@@ -97,7 +109,7 @@ public class Agender {
      * Permite definir uma nova data para o fim do semestre
      * @param endSemester
      */
-    public void setEndSemester(LocalDateTime endSemester) {
+    public void setEndSemester(LocalDate endSemester) {
         if(endSemester!=null)this.endSemester = endSemester;
     }
 
@@ -194,11 +206,34 @@ public class Agender {
          double totalHours = totalMinutes / 60;
          return totalHours;
     }
-    
-    /**
-     *
-     */
-    public void avaliations(){
-        //Do avaliations
+    public Evaluation[] evaluation(){
+        Evaluation[] evaluations = new Evaluation[ucs.length];
+        for(int i = 0; i < ucs.length ; i++){
+            for(Evaluation evaluation: ucs[i].getEvaluation()){
+                 evaluations[i] = evaluation;
+            }
+               
+        }
+        return evaluations;
     }
+    
+    public int getNumberWeeks(){
+        long weeksBetween = WEEKS.between(startSemester,endSemester);
+        return (int) weeksBetween;
+    }
+    
+    public void setClassEveryWeek(Schedule schedule){
+        for(Schedule sch : schedules){
+            if(sch.equals(schedule)){
+                 for(int i = 0;i< getNumberWeeks(); i++){
+                     if(schedules[i] != null){
+                         schedules[i] = new Schedule(schedule.getBeginning().plusDays(7),schedule.getDuration());
+                     }
+                }
+            }
+        }
+       
+    }
+    
+
 }
