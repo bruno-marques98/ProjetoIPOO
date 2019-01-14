@@ -34,7 +34,12 @@ public class Program {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        Course[] courses = createCourses();
+        Student student = new Student("Afonso",LocalDate.of(1998,10,10),'H',courses[0]);
+        
+        Menu menu = new Menu(student);
+        menu.execute();
+        /*
         Classroom[] classrooms = createClassrooms();
          
         Evaluation[] evaluations = createEvaluations(classrooms);
@@ -63,8 +68,7 @@ public class Program {
         Schedule[] weekSchedule = visualizer.getWeekSchedule(1);
         for(int i = 0; i < weekSchedule.length;i++){
             weekSchedule[i].dateAndDurationToString();
-        }
-        InputReader reader = new InputReader();
+        }*/
          
     }
     /**

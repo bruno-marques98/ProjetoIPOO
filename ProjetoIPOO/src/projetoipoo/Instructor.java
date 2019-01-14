@@ -19,7 +19,7 @@ public class Instructor {
     private String email;
     private Classroom room;
     private Schedule[] schedule;
-    private boolean isScheduleInserd;
+    private boolean isScheduleInserd = false;
     
     /**
      * Construtor que cria um docente com um horário de atendimento ainda não inserido
@@ -45,6 +45,11 @@ public class Instructor {
         }
         this.schedule = schedule;
         isScheduleInserd = false;       
+    }
+
+    public Instructor(String name, String email) {
+        this.name = name;
+        this.email = email;
     }
 
     /**

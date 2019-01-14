@@ -27,6 +27,8 @@ public class Group {
         }
         
     }
+    public Group() {
+    }
 
     /**
      * Permite obter a unidade curricular

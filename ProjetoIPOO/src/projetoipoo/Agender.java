@@ -41,6 +41,13 @@ public class Agender {
         this.groups = groups;
         this.schedules = schedules;
     }
+
+    public Agender(LocalDate startSemester, LocalDate endSemester, boolean isSemesterPar) {
+        this.startSemester = startSemester;
+        this.endSemester = endSemester;
+        this.isSemesterPar = isSemesterPar;
+    }
+    
     
 
     public Schedule[] getSchedules() {
@@ -154,14 +161,27 @@ public class Agender {
     public boolean addGroup(Group group){
         if(group != null){
             for (int i = 0; i < groups.length; i++) {
-                 groups[i] = group;
-                 return true;
+                if(groups[i] != null){
+                    groups[i] = group;
+                    return true;  
+                }
+                 
                 
             }
         }
         return false;
     }
-
+    public boolean addInstructor(Instructor ins){
+        if(ins != null){
+            for (int i = 0; i < instructors.length; i++) {
+                if(instructors[i] != null){
+                    instructors[i] = ins;
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     /**
      * Mostra no ecrã uma mensagem com a coleção dos grupos
      */

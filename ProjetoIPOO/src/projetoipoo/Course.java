@@ -126,7 +126,7 @@ public class Course {
      */
     @Override
     public String toString() {
-        return type + "\n" + "Course{" + name + ", Initials: " + initials + ", Credits: " + credits ;
+        return "Curso " + name;
     }
     
 }

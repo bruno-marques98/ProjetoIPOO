@@ -31,6 +31,12 @@ public class UC {
         this.classes = classes;
         this.evaluation = evaluation;
     }
+
+    public UC(String UCName, int id, int numberOfCredits) {
+        this.UCName = UCName;
+        this.id = UCName + id;
+        this.numberOfCredits = numberOfCredits;
+    }
     
   
 
