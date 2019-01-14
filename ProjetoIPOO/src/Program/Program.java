@@ -64,6 +64,7 @@ public class Program {
         for(int i = 0; i < weekSchedule.length;i++){
             weekSchedule[i].dateAndDurationToString();
         }
+        InputReader reader = new InputReader();
          
     }
     /**
