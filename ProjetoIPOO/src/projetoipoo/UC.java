@@ -5,6 +5,9 @@
  */
 package projetoipoo;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 /**
  * A classe UC implementa uma unidade curricular
  * Esta classe utiliza a UCClass para definir uma lista de aulas dessa unidade curricular
@@ -15,8 +18,8 @@ public class UC {
     private String UCName;
     private String id;
     private int numberOfCredits;
-    private UCClass[] classes;
-    private Evaluation[] evaluation;
+    private ArrayList<UCClass> classes;
+    private HashMap<Evaluation,Student> evaluation;
     /**
      * Construtor que permite criar uma determinada unidade curricular 
      * @param UCName
@@ -24,7 +27,7 @@ public class UC {
      */
   
 
-    public UC(String UCName, int id, int numberOfCredits, UCClass[] classes, Evaluation[] evaluation) {
+    public UC(String UCName, int id, int numberOfCredits, ArrayList<UCClass> classes, HashMap<Evaluation,Student> evaluation) {
         this.UCName = UCName;
         this.id = UCName + id;
         this.numberOfCredits = numberOfCredits;
@@ -40,7 +43,7 @@ public class UC {
     
   
 
-    public Evaluation[] getEvaluation() {
+    public HashMap<Evaluation, Student> getEvaluation() {
         return evaluation;
     }
     
@@ -49,7 +52,7 @@ public class UC {
      * Permite obter a lista de aulas 
      * @return aulas
      */
-    public UCClass[] getClasses() {
+    public ArrayList<UCClass> getClasses() {
         return classes;
     }
 
@@ -108,13 +111,11 @@ public class UC {
      */
     public boolean addClass(UCClass ucRoom){
         if(ucRoom != null){
-            for(int i = 0; i < classes.length; i++){
-                if(classes[i] == null){
-                    classes[i] = ucRoom;
+            classes.add(ucRoom);
                     return true;
                 }
-            }
-        }
+            
+        
         return false;
     }
 
@@ -122,7 +123,7 @@ public class UC {
      * 
      * @param rooms
      */
-    public void addClasses(UCClass [] rooms){
+   /*public void addClasses(ArrayList<UCClass> rooms){
         for(int i = 0; i < rooms.length; i++){
             for(int j = 0; j < classes.length; j++){
                 if(classes[j]!=null){
@@ -131,14 +132,14 @@ public class UC {
             }
         }
     }
-    
+    */
     /**
      * Permite mostrar no ecrã a lista de aulas da unidade curricular
      */
     public void showClasses(){
-        for(int i = 0; i < classes.length;i++){
-            if(classes[i] != null){
-                System.out.println(classes[i].toString());
+        for(int i = 0; i < classes.size();i++){
+            if(classes.get(i) != null){
+                System.out.println(classes.get(i).toString());
             }
            
         }

@@ -5,6 +5,8 @@
  */
 package projetoipoo;
 
+import java.util.HashSet;
+
 /**
  * A class Group implementa um grupo de alunos que se juntam para fazer trabalhos no âmbito de determinadas unidades curriculares
  * Esta classe utiliza as classes Student para definir uma coleção de estudantes e a UC para definir uma unidade curricular
@@ -12,7 +14,7 @@ package projetoipoo;
  * @version 
  */
 public class Group {
-    private Student[] students;
+    private HashSet<Student> students;
     private UC uc;
 
     /**
@@ -20,7 +22,7 @@ public class Group {
      * @param uc
      * @param stds-estudantes
      */
-    public Group(UC uc,Student[] stds) {
+    public Group(UC uc,HashSet<Student> stds) {
         students = stds;
         if(uc!=null){
             this.uc = uc;
@@ -55,12 +57,10 @@ public class Group {
      */
     public boolean addStudent(Student std){
         if(std!=null){
-            for(int i = 0; i < students.length;i++){
-                if(students[i] == null){
-                    students[i] = std;
+            students.add(std);
                     return true;
-                }
-            }
+                
+            
         }
         return false;
     }
@@ -69,7 +69,7 @@ public class Group {
      * Permite obter uma coleção de estudantes
      * @return estudantes
      */
-    public Student[] getStudents(){
+    public HashSet<Student> getStudents(){
         return students;
     }
     

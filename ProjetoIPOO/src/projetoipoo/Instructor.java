@@ -6,6 +6,8 @@
 package projetoipoo;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * A classe Instructor implementa um docente
@@ -141,4 +143,28 @@ public class Instructor {
         System.out.println(str);
         return str;
     }
+
+    @Override
+    public int hashCode() {
+       return id;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Instructor other = (Instructor) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return true;
+    }
+    
 }

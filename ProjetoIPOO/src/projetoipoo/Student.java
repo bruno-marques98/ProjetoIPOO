@@ -7,6 +7,7 @@ package projetoipoo;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  * A classe Student implementa a caraterização de um estudante do IPS
@@ -20,7 +21,7 @@ public class Student {
     private LocalDate birthDate;
     private char genre;
     private Course course;
-    private Agender[] agenders;
+    private ArrayList<Agender> agenders;
 
     /**
      * Construtor que permite criar um novo aluno
@@ -39,7 +40,7 @@ public class Student {
             this.genre = 'H';
         }
         this.course = course;
-        this.agenders = new Agender[10];
+        this.agenders = new ArrayList<>();
     }
 
     /**
@@ -62,7 +63,7 @@ public class Student {
      * Permite obter a lista de agendas
      * @return agendas
      */
-    public Agender[] getAgender() {
+    public ArrayList<Agender> getAgender() {
         return agenders;
     }
 
@@ -104,13 +105,12 @@ public class Student {
      * @return true se for possivel adicionar a agenda, adicionando a mesma / false se não for possivel adicionar
      */
     public boolean addAgender(Agender agender){
-        for(int i = 0; i < agenders.length;i++){
-            if(agenders[i] != null){
-                agenders[i] = agender;
+        if(agender != null){
+            agenders.add(agender);
                 return true;
             }
-        }
         return false;
+        
     }
     
     /**
@@ -118,9 +118,9 @@ public class Student {
      * @return lista das agendas ativas
      */
     public Agender getActiveAgender(){
-        for(int i = 0; i <agenders.length;i++){
-            if(agenders[i].getStartSemester().isBefore(LocalDate.now()) && agenders[i].getEndSemester().isAfter(LocalDate.now()) ){
-                return agenders[i];
+        for(int i = 0; i <agenders.size();i++){
+            if(agenders.get(i).getStartSemester().isBefore(LocalDate.now()) && agenders.get(i).getEndSemester().isAfter(LocalDate.now()) ){
+                return agenders.get(i);
             }
         }
         return null;
@@ -134,4 +134,28 @@ public class Student {
         Agender ag = getActiveAgender();
         ag.addUC(uc);
     }
+
+    @Override
+    public int hashCode() {
+        return studentNumber;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Student other = (Student) obj;
+        if (this.studentNumber != other.studentNumber) {
+            return false;
+        }
+        return true;
+    }
+    
 }

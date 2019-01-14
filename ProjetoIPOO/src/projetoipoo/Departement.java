@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package projetoipoo;
+ 
 
 /**
  * A classe Department implementa uma entidade que agrega os docentes de uma mesma área cientifica
@@ -11,10 +12,13 @@ package projetoipoo;
  * @author bruno_170221059 Gonçalo_180221046
  * @version 
  */
+import java.util.ArrayList;
+import java.util.HashSet;
+
 public class Departement {
     private String name;
-    private Course[] courses;
-    private Instructor[] instructors;
+    private ArrayList<Course> courses;
+    private HashSet<Instructor> instructors;
 
     /**
      * Construtor que cria um departamento
@@ -22,7 +26,7 @@ public class Departement {
      * @param courses
      * @param instructors
      */
-    public Departement(String name, Course[] courses, Instructor[] instructors) {
+    public Departement(String name, ArrayList<Course> courses, HashSet<Instructor> instructors) {
         this.name = name;
         this.courses = courses;
         this.instructors = instructors;
@@ -34,8 +38,8 @@ public class Departement {
      */
     public Departement(String name) {
         this.name = name;
-        courses = new Course[10];
-        instructors = new Instructor[10];
+        courses = new ArrayList<>();
+        instructors = new HashSet<>();
     }
 
     /**
@@ -58,7 +62,7 @@ public class Departement {
      * 
      * @return
      */
-    public Course[] getCourses() {
+    public ArrayList<Course> getCourses() {
         return courses;
     }
 
@@ -66,7 +70,7 @@ public class Departement {
      * Permite modificar os cursos
      * @param courses
      */
-    public void setCourses(Course[] courses) {
+    public void setCourses(ArrayList<Course> courses) {
         this.courses = courses;
     }
 
@@ -74,7 +78,7 @@ public class Departement {
      * Permite obter a lista de docentes do departamento
      * @return
      */
-    public Instructor[] getInstructors() {
+    public HashSet<Instructor> getInstructors() {
         return instructors;
     }
 
@@ -82,7 +86,7 @@ public class Departement {
      * Permite modificar os docentes
      * @param instructors
      */
-    public void setInstructors(Instructor[] instructors) {
+    public void setInstructors(HashSet<Instructor> instructors) {
         this.instructors = instructors;
     }
     
