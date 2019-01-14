@@ -4,12 +4,14 @@
  * and open the template in the editor.
  */
 package projetoipoo;
+import java.util.ArrayList;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
 import static java.time.temporal.ChronoUnit.DAYS;
 import static java.time.temporal.ChronoUnit.WEEKS;
+import java.util.HashSet;
 
 /**
  * Agender implementa uma agenda de um aluno para cada semestre
@@ -21,10 +23,10 @@ public class Agender {
     private LocalDate startSemester;
     private LocalDate endSemester;
     private boolean isSemesterPar;
-    private UC[] ucs;
-    private Instructor[] instructors;
-    private Group[] groups;
-    private Schedule[] schedules;
+    private ArrayList<UC> ucs;
+    private HashSet<Instructor> instructors;
+    private ArrayList<Group> groups;
+    private ArrayList<Schedule> schedules;
 
     /**
      * Construtor da classe Agender que permite criar uma agenda com uma data do inicio e fim do semestre
@@ -32,7 +34,7 @@ public class Agender {
      * @param endSemester
      * @param isSemesterPar
      */
-    public Agender(LocalDate startSemester, LocalDate endSemester, boolean isSemesterPar, UC[] ucs, Instructor[] instructors, Group[] groups, Schedule[] schedules) {
+    public Agender(LocalDate startSemester, LocalDate endSemester, boolean isSemesterPar, ArrayList<UC> ucs, HashSet<Instructor> instructors, ArrayList<Group> groups, ArrayList<Schedule> schedules) {
         this.startSemester = startSemester;
         this.endSemester = endSemester;
         this.isSemesterPar = isSemesterPar;
@@ -43,7 +45,7 @@ public class Agender {
     }
     
 
-    public Schedule[] getSchedules() {
+    public ArrayList<Schedule> getSchedules() {
         return schedules;
     }
     
@@ -75,7 +77,7 @@ public class Agender {
      * Permite obter a lista de unidades curriculares na agenda do aluno
      * @return ucs
      */
-    public UC[] getUcs() {
+    public ArrayList<UC> getUcs() {
         return ucs;
     }
 
@@ -83,7 +85,7 @@ public class Agender {
      * Permite obter a lista de docentes que são responsáveis por lecionar as unidades curriculares do aluno
      * @return docentes
      */
-    public Instructor[] getInstructors() {
+    public HashSet<Instructor> getInstructors() {
         return instructors;
     }
 
@@ -91,7 +93,7 @@ public class Agender {
      * Permite obter a lista de grupos em que os alunos participam
      * @return
      */
-    public Group[] getGroups() {
+    public ArrayList<Group> getGroups() {
         return groups;
     }
 
@@ -123,7 +125,7 @@ public class Agender {
      * Permite modificar uma nova coleção de grupos
      * @param groups
      */
-    public void setGroup(Group[] groups){
+    public void setGroup(ArrayList<Group> groups){
         if(groups != null){
             this.groups = groups;
         }
@@ -136,13 +138,12 @@ public class Agender {
      */
     public boolean addUC(UC uc){
         if(uc!=null){
-            for(int i = 0; i < ucs.length; i++){
-                if(ucs[i] == null){
-                    ucs[i] = uc;
+               
+                    ucs.add(uc);
                     return true;
                 }
-            }
-        }
+            
+        
         return false;
     }
 
@@ -153,12 +154,12 @@ public class Agender {
      */
     public boolean addGroup(Group group){
         if(group != null){
-            for (int i = 0; i < groups.length; i++) {
-                 groups[i] = group;
+            
+                 groups.add(group);
                  return true;
-                
-            }
-        }
+                }
+            
+        
         return false;
     }
 
@@ -166,9 +167,9 @@ public class Agender {
      * Mostra no ecrã uma mensagem com a coleção dos grupos
      */
     public void showGroup(){
-        for(int i = 0; i < groups.length; i++){
-            if(groups[i] != null){
-                System.out.println(groups[i].toString());
+        for(int i = 0; i < groups.size(); i++){
+            if(groups.get(i) != null){
+                System.out.println(groups.get(i).toString());
             }
         }
     }
@@ -204,17 +205,17 @@ public class Agender {
          double totalHours = totalMinutes / 60;
          return totalHours;
     }
-    public Evaluation[] evaluation(){
-        Evaluation[] evaluations = new Evaluation[ucs.length];
-        for(int i = 0; i < ucs.length ; i++){
-            for(Evaluation evaluation: ucs[i].getEvaluation()){
+    /*public Evaluation evaluation(){
+        Evaluation[] evaluations = new Evaluation[ucs.size()];
+        for(int i = 0; i < ucs.size() ; i++){
+            for(Evaluation evaluation: ucs.get(i).getEvaluation()){
                  evaluations[i] = evaluation;
             }
                
         }
         return evaluations;
     }
-    
+    */
     public int getNumberWeeks(){
         long weeksBetween = WEEKS.between(startSemester,endSemester);
         return (int) weeksBetween;
@@ -224,8 +225,8 @@ public class Agender {
         for(Schedule sch : schedules){
             if(sch.equals(schedule)){
                  for(int i = 0;i< getNumberWeeks(); i++){
-                     if(schedules[i] != null){
-                         schedules[i] = new Schedule(schedule.getBeginning().plusDays(7),schedule.getEnding());
+                     if(schedules.get(i) != null){
+                         schedules.set(i, new Schedule(schedule.getBeginning().plusDays(7),schedule.getEnding()));
                      }
                 }
             }
