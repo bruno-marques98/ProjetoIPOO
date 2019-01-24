@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetoipoo;
+package classes;
 
 import java.time.LocalDateTime;
 
@@ -38,6 +38,31 @@ public class Evaluation {
         this.classroom = classroom;
         this.date = LocalDateTime.now();
     }
+
+    public EvaluationType getType() {
+        return type;
+    }
+
+    public void setType(EvaluationType type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Classroom getClassroom() {
+        return classroom;
+    }
+
+    public void setClassroom(Classroom classroom) {
+        this.classroom = classroom;
+    }
+    
     
     /**
      * Permite adicionar uma descrição

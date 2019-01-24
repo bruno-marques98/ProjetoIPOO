@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetoipoo;
+package classes;
 
 /**
  * A classe Course implementa a escolha de um curso
@@ -119,6 +119,39 @@ public class Course {
                 }
             }
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public CourseType getType() {
+        return type;
+    }
+
+    public void setType(CourseType type) {
+        this.type = type;
+    }
+
+    public String getInitials() {
+        return initials;
+    }
+
+    public void setInitials(String initials) {
+        this.initials = initials;
+    }
+
+    public int getCredits() {
+        return credits;
+    }
+
+    public void setCredits(int credits) {
+        this.credits = credits;
+    }
+    
 
     /**
      * Permite obter uma cadeia de caractéres com as informações do curso(nome,iniciais e creditos)

@@ -9,19 +9,19 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.Month;
-import projetoipoo.Agender;
-import projetoipoo.Classroom;
-import projetoipoo.ClassroomType;
-import projetoipoo.Course;
-import projetoipoo.CourseType;
-import projetoipoo.Evaluation;
-import projetoipoo.EvaluationType;
-import projetoipoo.Group;
-import projetoipoo.Instructor;
-import projetoipoo.Schedule;
-import projetoipoo.Student;
-import projetoipoo.UC;
-import projetoipoo.UCClass;
+import classes.Agender;
+import classes.Classroom;
+import classes.ClassroomType;
+import classes.Course;
+import classes.CourseType;
+import classes.Evaluation;
+import classes.EvaluationType;
+import classes.Group;
+import classes.Instructor;
+import classes.Schedule;
+import classes.Student;
+import classes.UC;
+import classes.UCClass;
 
 /**
  *

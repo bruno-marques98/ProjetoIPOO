@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetoipoo;
+package classes;
  
 
 /**
@@ -14,6 +14,7 @@ package projetoipoo;
  */
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Objects;
 
 public class Departement {
     private String name;
@@ -57,6 +58,20 @@ public class Departement {
     public void setName(String name) {
         this.name = name;
     }
+    public boolean addCourse(Course course){
+        if(course != null){
+            courses.add(course);
+            return true;
+        }
+        return false;
+    }
+    public boolean addInstructor(Instructor ins){
+        if(ins!=null){
+            instructors.add(ins);
+            return true;
+        }
+        return false;
+    }
 
     /**
      * 
@@ -89,6 +104,40 @@ public class Departement {
     public void setInstructors(HashSet<Instructor> instructors) {
         this.instructors = instructors;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 17 * hash + this.name.hashCode();
+        hash = 17 * hash + this.courses.size();
+        hash = 17 * hash + this.instructors.size();
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Departement other = (Departement) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.courses, other.courses)) {
+            return false;
+        }
+        if (!Objects.equals(this.instructors, other.instructors)) {
+            return false;
+        }
+        return true;
+    }
+    
     
     
 }

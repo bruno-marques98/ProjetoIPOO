@@ -8,18 +8,18 @@ package Program;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
-import projetoipoo.Classroom;
-import projetoipoo.Evaluation;
-import projetoipoo.Group;
-import projetoipoo.Instructor;
-import projetoipoo.Student;
-import projetoipoo.Agender;
-import projetoipoo.Class;
-import projetoipoo.ClassDurationType;
-import projetoipoo.ClassType;
-import projetoipoo.Schedule;
-import projetoipoo.UC;
-import projetoipoo.UCClass;
+import classes.Classroom;
+import classes.Evaluation;
+import classes.Group;
+import classes.Instructor;
+import classes.Student;
+import classes.Agender;
+import classes.ClassDurationType;
+import classes.ClassType;
+import classes.Schedule;
+import classes.UC;
+import classes.UCClass;
+import java.util.ArrayList;
 
 
 /**
@@ -27,14 +27,14 @@ import projetoipoo.UCClass;
  * @author bruno_170221059 Gonçalo_180221046
  */
 public class Visualizer {
-    private Instructor[] instructors;
-    private Student[] students;
-    private Classroom[] classrooms;
-    private Evaluation[] evaluations;
+    private ArrayList<Instructor> instructors;
+    private ArrayList<Student> students;
+    private ArrayList<Classroom> classrooms;
+    private ArrayList<Evaluation> evaluations;
     private Agender agender;
 
 
-    public Visualizer(Instructor[] instructors, Student[] students, Classroom[] classrooms, Evaluation[] evaluations, Agender agender) {
+    public Visualizer(ArrayList<Instructor> instructors,ArrayList<Student> students,ArrayList<Classroom> classrooms,ArrayList<Evaluation> evaluations, Agender agender) {
         this.instructors = instructors;
         this.students = students;
         this.classrooms = classrooms;
@@ -47,29 +47,23 @@ public class Visualizer {
      * @param studentNumber
      * @param groups
      */
-    public void showGroups(int studentNumber, Group[] groups){
-         for(Group group : groups){
-             if(group.containsStudent(studentNumber)){
-                 group.toString();
-             }
-         }
+    public void showGroups(int studentNumber, ArrayList<Group> groups){
+        groups.stream().filter((group) -> (group.containsStudent(studentNumber))).forEachOrdered((group) -> {
+            group.toString();
+        });
     }
     /**
      * Permite obter o horário de uma semana
      * @param numberOfWeek
      * @return schedule
      */    
-    public Schedule[] getWeekSchedule(int numberOfWeek){
+    public ArrayList<Schedule> getWeekSchedule(int numberOfWeek){
         LocalDate date = agender.getStartSemester().plusDays(numberOfWeek*7); 
         int firstDayOkWeek = date.getDayOfMonth();
-        Schedule[] schds = new Schedule[20];
+        ArrayList<Schedule> schds = new ArrayList<>();
         for (Schedule schedule : agender.getSchedules()) {
             if (schedule.getBeginning().toLocalDate().compareTo(date) > 0 && schedule.getBeginning().toLocalDate().compareTo(date.plusDays(7)) < 0) {
-                for (int j = 0; j < schds.length; j++) {
-                    if (schds[j] == null) {
-                        schds[j] = schedule;
-                    }
-                }
+                schds.add(schedule);
             }
         }
         return schds; 
@@ -80,15 +74,11 @@ public class Visualizer {
      * @param month
      * @return schedule
      */ 
-    public Schedule[] getDaySchedule(int dayOfMonth, int month){
-        Schedule[] schd = new Schedule[10];
+    public ArrayList<Schedule> getDaySchedule(int dayOfMonth, int month){
+        ArrayList<Schedule> schd = new ArrayList<>();
         for (Schedule schedule : agender.getSchedules()) {
             if (schedule.getBeginning().getMonthValue() == month && schedule.getBeginning().getDayOfMonth() == dayOfMonth) {
-                for (int j = 0; j < schd.length; j++) {
-                    if (schd[j] == null) {
-                        schd[j] = schedule;
-                    }
-                }
+                schd.add(schedule);
             }
         }
         return schd;
@@ -98,17 +88,13 @@ public class Visualizer {
      * @param uc
      * @return evaluations
      */ 
-    public Evaluation[] getEvaluations(UC uc){
-        Evaluation[] evaluations = new Evaluation[10];
+    public ArrayList<Evaluation> getEvaluations(UC uc){
+        ArrayList<Evaluation> evaluations = new ArrayList<>();
         for(UC uC : agender.getUcs()){
             if(uC.getId() == uc.getId()){
-                for(Evaluation evaluation : uC.getEvaluation()){
+                for(Evaluation evaluation : uC.getEvaluation().keySet()){
                     if(evaluation.getDate().compareTo(LocalDateTime.now())>=0){
-                        for(int i = 0; i < evaluations.length; i++){
-                            if(evaluations[i]!=null){
-                                evaluations[i] = evaluation;
-                            }
-                        }
+                        evaluations.add(evaluation);
                     }
                 }
                 
@@ -121,15 +107,15 @@ public class Visualizer {
      * @param ucId 
      * @return schedule
      */ 
-    public Schedule[] getInstructorsSchedule(String ucId){
-        Schedule[] schd = new Schedule[20];
+    public ArrayList<Schedule> getInstructorsSchedule(String ucId){
+        ArrayList<Schedule> schd = new ArrayList<>();
         for(UC uc : agender.getUcs()){
             if(uc.getId().compareTo(ucId) == 0){
-                for(int i = 0; i < instructors.length; i++){
-                    if(instructors[i].getSchedule() != null){
-                        schd = instructors[i].getSchedule();
+                for(Instructor ins : instructors){
+                    for(Schedule sc : ins.getSchedule()){
+                        schd.add(sc);
                     }
-                }
+                }   
             }
         }
         return schd;
@@ -139,16 +125,12 @@ public class Visualizer {
      * @param classroomName
      * @return UCClasses
      */ 
-    public UCClass[] getClasses(String classroomName){
-        UCClass[] ucClasses = new UCClass[20]; 
+    public ArrayList<UCClass> getClasses(String classroomName){
+        ArrayList<UCClass> ucClasses = new ArrayList<>();
         for(UC uc : agender.getUcs()){
             for(UCClass ucClass : uc.getClasses()){
                 if(ucClass.getRoom().getName().compareTo(classroomName)==0){
-                    for(int i = 0; i < ucClasses.length ; i++){
-                        if(ucClasses[i] != null){
-                              ucClasses[i] = ucClass;
-                        }
-                    }
+                    ucClasses.add(ucClass);
                 }
             }
         }
@@ -158,16 +140,12 @@ public class Visualizer {
      * Permite obter as UCs
      * @return UCs
      */ 
-    public UC[] getUCs(){
-        UC[] ucs = new UC[20];
+    public ArrayList<UC> getUCs(){
+        ArrayList<UC> ucs = new ArrayList<>();
         for(UC ucss : agender.getUcs()){
             for(UCClass ucClasses: ucss.getClasses()){
                 if(ucClasses.getEndClass().toLocalDate().compareTo(agender.getEndSemester())<0){
-                    for(int i = 0; i < ucs.length; i++){
-                        if(ucs[i] != null){
-                            ucs[i] = ucss;
-                        }
-                    }
+                    ucs.add(ucss);
                 }
             }
         }

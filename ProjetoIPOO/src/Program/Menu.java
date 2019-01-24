@@ -9,11 +9,11 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import projetoipoo.Agender;
-import projetoipoo.Group;
-import projetoipoo.Instructor;
-import projetoipoo.Student;
-import projetoipoo.UC;
+import classes.Agender;
+import classes.Group;
+import classes.Instructor;
+import classes.Student;
+import classes.UC;
 
 /**
  *

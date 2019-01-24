@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetoipoo;
+package classes;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 /**
  * A classe UC implementa uma unidade curricular
@@ -112,36 +113,60 @@ public class UC {
     public boolean addClass(UCClass ucRoom){
         if(ucRoom != null){
             classes.add(ucRoom);
-                    return true;
-                }
-            
-        
+            return true;
+        }
         return false;
     }
 
-    /**
-     * 
-     * @param rooms
-     */
-   /*public void addClasses(ArrayList<UCClass> rooms){
-        for(int i = 0; i < rooms.length; i++){
-            for(int j = 0; j < classes.length; j++){
-                if(classes[j]!=null){
-                    classes[j] = rooms[i];
-                }
-            }
-        }
-    }
-    */
+
     /**
      * Permite mostrar no ecrã a lista de aulas da unidade curricular
      */
     public void showClasses(){
-        for(int i = 0; i < classes.size();i++){
-            if(classes.get(i) != null){
-                System.out.println(classes.get(i).toString());
-            }
-           
-        }
+        classes.forEach((clas) -> {
+            System.out.println(clas.toString());
+        });  
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 79 * hash + this.UCName.hashCode();
+        hash = 79 * hash + this.id.hashCode();
+        hash = 79 * hash + this.numberOfCredits;
+        hash = 79 * hash + this.classes.hashCode();
+        hash = 79 * hash + this.evaluation.hashCode();
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final UC other = (UC) obj;
+        if (this.numberOfCredits != other.numberOfCredits) {
+            return false;
+        }
+        if (!Objects.equals(this.UCName, other.UCName)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.classes, other.classes)) {
+            return false;
+        }
+        if (!Objects.equals(this.evaluation, other.evaluation)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetoipoo;
+package classes;
 
 import java.util.HashSet;
+import java.util.Objects;
 
 /**
  * A class Group implementa um grupo de alunos que se juntam para fazer trabalhos no âmbito de determinadas unidades curriculares
@@ -22,14 +23,11 @@ public class Group {
      * @param uc
      * @param stds-estudantes
      */
-    public Group(UC uc,HashSet<Student> stds) {
-        students = stds;
+    public Group(UC uc) {
+        this.students = new HashSet<>();
         if(uc!=null){
             this.uc = uc;
         }
-        
-    }
-    public Group() {
     }
 
     /**
@@ -58,9 +56,7 @@ public class Group {
     public boolean addStudent(Student std){
         if(std!=null){
             students.add(std);
-                    return true;
-                
-            
+            return true;            
         }
         return false;
     }
@@ -89,6 +85,35 @@ public class Group {
             txt+= std.toString() + "\n";
         }
         return txt;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 89 * hash + this.students.hashCode();
+        hash = 89 * hash + this.uc.getNumberOfCredits();
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Group other = (Group) obj;
+        if (!Objects.equals(this.students, other.students)) {
+            return false;
+        }
+        if (!Objects.equals(this.uc, other.uc)) {
+            return false;
+        }
+        return true;
     }
     
 }

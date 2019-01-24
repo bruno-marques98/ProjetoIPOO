@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package projetoipoo;
+package classes;
 
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Objects;
+import java.util.ArrayList;
 
 /**
  * A classe Instructor implementa um docente
@@ -20,7 +19,7 @@ public class Instructor {
     private int id = 0;
     private String email;
     private Classroom room;
-    private Schedule[] schedule;
+    private ArrayList<Schedule> schedule;
     private boolean isScheduleInserd = false;
     
     /**
@@ -30,7 +29,7 @@ public class Instructor {
      * @param room
      */
 
-    public Instructor(String name, String email,Classroom room,Schedule[] schedule){
+    public Instructor(String name, String email,Classroom room){
         if(name != null){
             this.name = name;
         }else{
@@ -45,7 +44,7 @@ public class Instructor {
         if(room!= null){
             this.room  = room;
         }
-        this.schedule = schedule;
+        this.schedule = new ArrayList<>();
         isScheduleInserd = false;       
     }
 
@@ -53,7 +52,13 @@ public class Instructor {
         this.name = name;
         this.email = email;
     }
-
+    public boolean addSchedule(Schedule sch){
+        if(sch != null){
+            schedule.add(sch);
+            return true;
+        }
+        return false;
+    }
     /**
      * Permite ober o nome do docente
      * @return nome
@@ -90,7 +95,7 @@ public class Instructor {
      *
      * @return
      */
-    public Schedule[] getSchedule() {
+    public ArrayList<Schedule> getSchedule() {
         return schedule;
     }
 
@@ -118,12 +123,10 @@ public class Instructor {
      * @param endDate
      */
     public void addAttendence(LocalDateTime startDate, LocalDateTime endDate){
-        for(int i = 0; i < schedule.length;i++){
-            if(schedule[i] == null){
-                schedule[i] = new Schedule(startDate,endDate);
-                return;
-            }
-        }
+        if(startDate!=null && endDate != null && startDate.isBefore(endDate) ){
+             schedule.add(new Schedule(startDate,endDate));
+        }       
+
     }
 
     /**
@@ -135,12 +138,9 @@ public class Instructor {
         str+="Id: "+ id+"\n";
         str+="Email: "+email+"\n";
         str+="Class: "+room.toString()+"\n";
-        for(int i = 0; i < schedule.length;i++){
-            if(schedule[i] != null){
-                str+="Schedule: "+schedule[i].dateToString();
-            }
+        for(Schedule sch : schedule){
+            str+="Schedule: "+sch.dateToString();
         }
-        System.out.println(str);
         return str;
     }
 
