@@ -32,4 +32,18 @@ public enum EvaluationType {
                 return "";
         }
     }
+    public int getDuration(){
+        switch(this){
+            case TEST:
+                return 2;
+            case EXAM:
+                return 2;
+            case PRESENTATION:
+                return 1;
+            case PROJECT:
+                return 4;
+            default:
+                return 0;
+        }
+    }
 }
