@@ -16,6 +16,7 @@ import classes.Student;
 import classes.Agender;
 import classes.ClassDurationType;
 import classes.ClassType;
+import classes.EvaluationType;
 import classes.Schedule;
 import classes.UC;
 import classes.UCClass;
@@ -150,5 +151,25 @@ public class Visualizer {
             }
         }
         return ucs;
+    }
+    public int numberOfHoursClassType(ClassType type){
+        int total = 0;
+        for(UC ucs : agender.getUcs()){
+            for(UCClass ucClasses : ucs.getClasses()){
+                if(ucClasses.getClassroomType().equals(type)){
+                    total+=(ucClasses.minutesDuration()/60);
+                }
+            }
+        }
+        return total;
+    }
+    public int numberOfHoursEvaluationType(EvaluationType type){
+        int total = 0;
+        for(Evaluation eval : evaluations){
+            if(eval.getType().equals(type)){
+                total+=type.getDuration();
+            }
+        }
+        return total;
     }
 }

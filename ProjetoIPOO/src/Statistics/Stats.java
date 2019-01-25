@@ -7,6 +7,7 @@ package Statistics;
 
 import Program.Visualizer;
 import classes.ClassType;
+import classes.EvaluationType;
 
 /**
  *
@@ -19,8 +20,39 @@ public class Stats {
         this.viewer = viwer;
     }
     
-    public int classesByType(ClassType type){
-        return 0;
+    public int hoursByClassesType(ClassType type){
+        int totalHours = 0;
+        switch(type){
+            case THEORY:
+                totalHours += viewer.numberOfHoursClassType(type);
+                break;
+            case PRACTICAL:
+                totalHours += viewer.numberOfHoursClassType(type);
+                break;
+            case LAB:
+                totalHours += viewer.numberOfHoursClassType(type); 
+                break;
+        }
+        return totalHours;
+    }
+        
+    public int hoursByEvaluationType(EvaluationType type){
+        int totalHours = 0;
+        switch(type){
+            case TEST:
+                totalHours += viewer.numberOfHoursEvaluationType(type);
+                break;
+            case EXAM:
+                totalHours += viewer.numberOfHoursEvaluationType(type);
+                break;
+            case PRESENTATION:
+                totalHours += viewer.numberOfHoursEvaluationType(type);   
+                break;
+            case PROJECT:
+                totalHours += viewer.numberOfHoursEvaluationType(type);   
+                break;
+        }
+        return totalHours;
     }
     
     
