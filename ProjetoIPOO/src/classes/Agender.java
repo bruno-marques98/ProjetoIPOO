@@ -232,6 +232,19 @@ public class Agender {
         }
         return true;
     }
-    
 
+    @Override
+    public String toString() {
+        String str = "";
+        str+="Agender"
+                + "\nDate of begining of semester: " + startSemester
+                + "\nDate of ending of semester: " + endSemester ;
+        if(isSemesterPar){
+            str+="\nThe semester is even";
+        }else{
+            str+="\nThe semester is not even";
+        }
+        return str;
+    }
+    
 }

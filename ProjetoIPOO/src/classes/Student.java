@@ -37,7 +37,7 @@ public class Student {
         if(genre == 'H' || genre == 'F'){
              this.genre = genre;
         }else{
-            this.genre = 'H';
+            this.genre = 'M';
         }
         this.course = course;
         this.agenders = new ArrayList<>();
@@ -118,9 +118,9 @@ public class Student {
      * @return lista das agendas ativas
      */
     public Agender getActiveAgender(){
-        for(int i = 0; i <agenders.size();i++){
-            if(agenders.get(i).getStartSemester().isBefore(LocalDate.now()) && agenders.get(i).getEndSemester().isAfter(LocalDate.now()) ){
-                return agenders.get(i);
+        for(Agender a : agenders){
+            if(a.getStartSemester().isAfter(LocalDate.now()) && a.getEndSemester().isBefore(LocalDate.now())){
+                return a;
             }
         }
         return null;
@@ -157,5 +157,21 @@ public class Student {
         }
         return true;
     }
+
+    @Override
+    public String toString() {
+        String str = "";
+        str+= "Estudante: "+name;
+        str+="\nNumero: "+studentNumber;
+        str+="\nData de Nascimento: "+birthDate;
+        if(genre == 'F'){
+            str+= "\nGenero: Femenino";
+        }else{
+            str+= "\nGenero: Masculino";
+        }
+        str+="\n"+course.toString();
+        return str;
+    }
+    
     
 }

@@ -133,6 +133,7 @@ public class Instructor {
      * Permite obter a informação do docente, numa cadeia de caractéres, mostrando também esta no ecrã
      * @return cadeia de caractéres
      */
+    @Override
     public String toString(){
         String str = "Instructor: "+ name+"\n";
         str+="Id: "+ id+"\n";

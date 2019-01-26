@@ -27,7 +27,7 @@ import java.util.ArrayList;
  *
  * @author bruno_170221059 Gonçalo_180221046
  */
-public class Visualizer {
+public class Viewer {
     private ArrayList<Instructor> instructors;
     private ArrayList<Student> students;
     private ArrayList<Classroom> classrooms;
@@ -35,13 +35,76 @@ public class Visualizer {
     private Agender agender;
 
 
-    public Visualizer(ArrayList<Instructor> instructors,ArrayList<Student> students,ArrayList<Classroom> classrooms,ArrayList<Evaluation> evaluations, Agender agender) {
+    public Viewer(ArrayList<Instructor> instructors,ArrayList<Student> students,ArrayList<Classroom> classrooms,ArrayList<Evaluation> evaluations, Agender agender) {
         this.instructors = instructors;
         this.students = students;
         this.classrooms = classrooms;
         this.evaluations = evaluations;
         this.agender = agender;
     }
+    public Viewer(){
+        this.agender = null;
+        this.classrooms = new ArrayList<>();
+        this.evaluations = new ArrayList<>();
+        this.instructors = new ArrayList<>();
+        this.students = new ArrayList<>();
+    }
+    public boolean addAgender(Agender agender){
+        if(agender!=null){
+            this.agender = agender;
+            //System.out.println("Add agender");
+            return true;
+        }
+        return false;
+    }
+    public boolean addInstructor(Instructor ins){
+        if(ins!=null){
+            this.instructors.add(ins);
+            return true;
+        }
+        return false;
+    }
+    public boolean addEvaluation(Evaluation evaluation){
+        if(evaluation!=null){
+            this.evaluations.add(evaluation);
+            return true;
+        }
+        return false;
+    }
+    public boolean addClassroom(Classroom room){
+        if(room!=null){
+            this.classrooms.add(room);
+            return true;
+        }
+        return false;
+    }
+    public boolean addStudent(Student std){
+        if(std!=null){
+            this.students.add(std);
+            return true;
+        }
+        return false;
+    }
+    public Agender getAgender() {
+        return agender;
+    }
+
+    public ArrayList<Instructor> getInstructors() {
+        return instructors;
+    }
+
+    public ArrayList<Student> getStudents() {
+        return students;
+    }
+
+    public ArrayList<Classroom> getClassrooms() {
+        return classrooms;
+    }
+
+    public ArrayList<Evaluation> getEvaluations() {
+        return evaluations;
+    }
+    
     
         /**
      * Permite ver os grupos de um estudante
