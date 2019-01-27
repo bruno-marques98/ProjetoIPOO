@@ -24,7 +24,7 @@ import java.util.ArrayList;
 
 
 /**
- *
+ * A classe Viewer permite visualizar informações sobre os docentes, alunos, salas de aula, avaliações e agendas
  * @author bruno_170221059 Gonçalo_180221046
  */
 public class Viewer {
@@ -34,7 +34,14 @@ public class Viewer {
     private ArrayList<Evaluation> evaluations;
     private Agender agender;
 
-
+    /**
+     * Contrutor da class Viewer
+     * @param instructors
+     * @param students
+     * @param classrooms
+     * @param evaluations
+     * @param agender
+     */
     public Viewer(ArrayList<Instructor> instructors,ArrayList<Student> students,ArrayList<Classroom> classrooms,ArrayList<Evaluation> evaluations, Agender agender) {
         this.instructors = instructors;
         this.students = students;
@@ -42,6 +49,10 @@ public class Viewer {
         this.evaluations = evaluations;
         this.agender = agender;
     }
+
+    /**
+     * Construtor da classe Viewer
+     */
     public Viewer(){
         this.agender = null;
         this.classrooms = new ArrayList<>();
@@ -49,6 +60,12 @@ public class Viewer {
         this.instructors = new ArrayList<>();
         this.students = new ArrayList<>();
     }
+
+    /**
+     * Permite modificar a agenda
+     * @param agender
+     * @return true se for possivel modificar / false se não for possivel
+     */
     public boolean setAgender(Agender agender){
         if(agender!=null){
             this.agender = agender;
@@ -57,6 +74,12 @@ public class Viewer {
         }
         return false;
     }
+
+    /**
+     * Permite adicionar um instrutor
+     * @param ins
+     * @return true se for possivel / false se não for possivel
+     */
     public boolean addInstructor(Instructor ins){
         if(ins!=null){
             this.instructors.add(ins);
@@ -64,6 +87,12 @@ public class Viewer {
         }
         return false;
     }
+
+    /**
+     * Permite adicionar uma avaliação
+     * @param evaluation
+     * @return true se for possivel / false se não for possivel
+     */
     public boolean addEvaluation(Evaluation evaluation){
         if(evaluation!=null){
             this.evaluations.add(evaluation);
@@ -71,6 +100,12 @@ public class Viewer {
         }
         return false;
     }
+
+    /**
+     * Permite adicionar uma sala de aula
+     * @param room
+     * @return true se for possivel / false se não for possivel
+     */
     public boolean addClassroom(Classroom room){
         if(room!=null){
             this.classrooms.add(room);
@@ -78,6 +113,12 @@ public class Viewer {
         }
         return false;
     }
+
+    /**
+     * Permite adicionar um estudante
+     * @param std
+     * @return true se for possivel / false se não for possivel
+     */
     public boolean addStudent(Student std){
         if(std!=null){
             this.students.add(std);
@@ -85,28 +126,49 @@ public class Viewer {
         }
         return false;
     }
+
+    /**
+     * Permite obter a agenda
+     * @return agenda
+     */
     public Agender getAgender() {
         return agender;
     }
 
+    /**
+     * Permite obter a lista de docentes
+     * @return lista de docentes
+     */
     public ArrayList<Instructor> getInstructors() {
         return instructors;
     }
 
+    /**
+     * Permite obter a lista de estudantes
+     * @return lista de estudantes
+     */
     public ArrayList<Student> getStudents() {
         return students;
     }
 
+    /**
+     * Permite obter a lista de salas de aula
+     * @return lista de salas de aula
+     */
     public ArrayList<Classroom> getClassrooms() {
         return classrooms;
     }
 
+    /**
+     * Permite obter a lista de avaliações
+     * @return lista de avaliações
+     */
     public ArrayList<Evaluation> getEvaluations() {
         return evaluations;
     }
     
     
-        /**
+     /**
      * Permite ver os grupos de um estudante
      * @param studentNumber
      * @param groups
@@ -215,6 +277,12 @@ public class Viewer {
         }
         return ucs;
     }
+
+    /**
+     * Permite obter o número de horas pelo tipo de aula
+     * @param type
+     * @return número de horas
+     */
     public int numberOfHoursClassType(ClassType type){
         int total = 0;
         if(agender.getUcs()==null) return 0;
@@ -227,6 +295,12 @@ public class Viewer {
         }
         return total;
     }
+
+    /**
+     * Permite obter o número de horas pelo tipo de avalição
+     * @param type
+     * @return número de horas
+     */
     public int numberOfHoursEvaluationType(EvaluationType type){
         int total = 0;
         if(evaluations==null) return 0;

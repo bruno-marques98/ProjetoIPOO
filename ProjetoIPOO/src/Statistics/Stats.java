@@ -16,16 +16,25 @@ import classes.UC;
 import java.time.LocalDateTime;
 
 /**
- *
+ * A classe Stats permite visualizar um conjunto de estatísticas sobre os compromissos
  * @author bruno
  */
 public class Stats {
     private Viewer viewer;
 
+    /**
+     * Construtor da classe Stats
+     * @param viwer
+     */
     public Stats(Viewer viwer) {
         this.viewer = viwer;
     }
     
+    /**
+     * Permite obter o número total de horas de uma aula pelo seu tipo
+     * @param type
+     * @return totalHours
+     */
     public int hoursByClassesType(ClassType type){
         int totalHours = 0;
         switch(type){
@@ -44,6 +53,11 @@ public class Stats {
         return totalHours;
     }
         
+    /**
+     *
+     * @param type
+     * @return
+     */
     public int hoursByEvaluationType(EvaluationType type){
         int totalHours = 0;
         switch(type){
@@ -64,6 +78,11 @@ public class Stats {
         }
         return totalHours;
     }
+
+    /**
+     * Permite obter o número total de horas das avaliações
+     * @return totalEvaluations
+     */
     public int hoursOfEvaluations(){
         int totalEvaluations = 0;
         for(UC uc : viewer.getUCs()){
@@ -73,6 +92,11 @@ public class Stats {
         }
         return totalEvaluations;
     }
+
+    /**
+     * Permite obter o número de avaliações que ainda estam por fazer
+     * @return totalEvaluations
+     */
     public int evaluationsToDo(){
         int totalEvaluations = 0;
         for(UC uc : viewer.getUCs()){
@@ -84,6 +108,11 @@ public class Stats {
         }
         return totalEvaluations;
     }
+
+    /**
+     *
+     * @return
+     */
     public int classesTillEnd(){
         int count = 0;
         for(Schedule s : viewer.getAgender().getSchedules()){
@@ -93,6 +122,11 @@ public class Stats {
         }
         return count;
     }
+
+    /**
+     * Permite obter o número total de créditos de todas as ucs
+     * @return credits
+     */
     public int totalCredits(){
         int credits =0;
         for(UC uc : viewer.getAgender().getUcs()){
@@ -100,6 +134,11 @@ public class Stats {
         }
         return credits;
     }
+
+    /**
+     * Permite obter a média do tempo de duração das aulas por semana
+     * @return média 
+     */
     public double averageHoursPerWeek(){
         double totalHours = 0;
         int weeks = viewer.getAgender().getNumberWeeks();
@@ -110,6 +149,12 @@ public class Stats {
         }
         return totalHours / weeks;        
     }
+
+    /**
+     * Permite obter o número médio de aulas por semestre de um aluno
+     * @param std
+     * @return número médio de aulas por semestre
+     */
     public double classesHours(Student std){
         int totalClasses = 0;
         int totalSemesters = 0;

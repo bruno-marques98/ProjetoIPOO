@@ -16,8 +16,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author bruno
+ * Classe de testes à classe Agender
+ * @author Bruno_170221059;Gonçalo_180221046
  */
 public class AgenderTest {
     private static Agender agender;

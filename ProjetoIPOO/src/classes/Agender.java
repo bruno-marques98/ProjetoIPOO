@@ -42,45 +42,114 @@ public class Agender {
         this.schedules = new ArrayList<>();
     }
 
+    /**
+     * Permite obter a data do incio do semestre
+     * @return data do incio
+     */
     public LocalDate getStartSemester() {
         return startSemester;
     }
+
+    /**
+     * Permite modificar a data de inicio do semestre
+     * @param startSemester
+     */
     public void setStartSemester(LocalDate startSemester) {
         this.startSemester = startSemester;
     }
+
+    /**
+     * Permite obter a data do final do semestre
+     * @return data do final
+     */
     public LocalDate getEndSemester() {
         return endSemester;
     }
+
+    /**
+     * Permite modificar a data do final do semestre
+     * @param endSemester
+     */
     public void setEndSemester(LocalDate endSemester) {
         this.endSemester = endSemester;
     }
+
+    /**
+     * Permite obter se o semestre é par ou não
+     * @return true se for par / false se não
+     */
     public boolean isIsSemesterPar() {
         return isSemesterPar;
     }
+
+    /**
+     * Permite modificar o estado do semestre(se é par ou não)
+     * @param isSemesterPar
+     */
     public void setIsSemesterPar(boolean isSemesterPar) {
         this.isSemesterPar = isSemesterPar;
     }
+
+    /**
+     * Permite obter a lista de ucs
+     * @return lista de ucs
+     */
     public ArrayList<UC> getUcs() {
         return ucs;
     }
+
+    /**
+     * Permite modificar a lista de ucs
+     * @param ucs
+     */
     public void setUcs(ArrayList<UC> ucs) {
         this.ucs = ucs;
     }
+
+    /**
+     * Permite obter a lista de docentes
+     * @return lista de docentes
+     */
     public ArrayList<Instructor> getInstructors() {
         return instructors;
     }
+
+    /**
+     * Permite modificar a lista de docentes
+     * @param instructors
+     */
     public void setInstructors(ArrayList<Instructor> instructors) {
         this.instructors = instructors;
     }
+
+    /**
+     * Permite obter a lista de grupos
+     * @return lista de grupos
+     */
     public ArrayList<Group> getGroups() {
         return groups;
     }
+
+    /**
+     * Permite modificar a lista de grupos
+     * @param groups
+     */
     public void setGroups(ArrayList<Group> groups) {
         this.groups = groups;
     }
+
+    /**
+     * Permite obter a lista de horários
+     * @return lista de horários
+     */
     public ArrayList<Schedule> getSchedules() {
         return schedules;
     }
+
+    /**
+     * Permite modificar a lista de horários
+     * @param schedules
+     */
     public void setSchedules(ArrayList<Schedule> schedules) {
         this.schedules = schedules;
     }
@@ -111,6 +180,12 @@ public class Agender {
         }
         return false;
     }
+
+    /**
+     * Permite adicionar um instrutor
+     * @param ins
+     * @return true se conseguiu adicionar / false se não
+     */
     public boolean addInstructor(Instructor ins){
         if(ins != null){
             instructors.add(ins);
@@ -118,6 +193,12 @@ public class Agender {
         }
         return false;
     }
+
+    /**
+     * Permite adicionar um horário
+     * @param sch
+     * @return true se conseguiu adicionar / false se não
+     */
     public boolean addSchedule(Schedule sch){
         if(sch!=null){
             schedules.add(sch);
@@ -162,6 +243,11 @@ public class Agender {
          double totalHours = (double) totalMinutes / 60;
          return totalHours;
     }
+
+    /**
+     * Permite obter uma lista de avalições
+     * @return lista de avaliações
+     */
     public ArrayList<Evaluation> evaluation(){
         ArrayList<Evaluation> evaluations = new ArrayList<>();
         for(UC uc : ucs){
@@ -172,11 +258,20 @@ public class Agender {
         return evaluations;
     }
     
+    /**
+     * Permite obter o número de semanas por semestre
+     * @return número de semanas
+     */
     public int getNumberWeeks(){
         long weeksBetween = WEEKS.between(startSemester,endSemester);
         return (int)weeksBetween;
     }
     
+    /**
+     * Permite modificar o horário da semana
+     * @param schedule
+     * @return true se for possivel modificar / false se não
+     */
     public boolean setClassEveryWeek(Schedule schedule){
         for(int i = 0;i< getNumberWeeks(); i++){
             if(schedules.get(i) != null){
@@ -237,6 +332,10 @@ public class Agender {
         return true;
     }
 
+    /**
+     * Retorna uma cadeia de caractéres com a informação sobre a agenda
+     * @return cadeia de caractéres
+     */
     @Override
     public String toString() {
         String str = "";

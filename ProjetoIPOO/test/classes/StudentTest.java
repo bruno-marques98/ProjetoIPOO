@@ -15,8 +15,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
- *
- * @author bruno
+ * Classe de teste à classe Student
+ * @author Bruno_170221059;Gonçalo_180221046
  */
 public class StudentTest {
     private Student std;

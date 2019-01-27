@@ -25,14 +25,18 @@ import classes.UCRoom;
 import java.time.LocalDateTime;
 
 /**
- *
- * @author bruno
+ * A classe Menu é responsavel por mostrar ao utilizador as opções de utilização da aplicação
+ * @author Bruno_170221059,Gonçalo_180221046
  */
 public class Menu {
     private InputReader input;
     private Student std;
     private Viewer viewer;
     private Stats stats;
+
+    /**
+     * Construtor da classe Menu
+     */
     public Menu() {
         this.input = new InputReader();
         String name = input.getText("Nome do aluno?");
@@ -58,6 +62,10 @@ public class Menu {
         this.stats = new Stats(viewer);
         
     }
+
+    /**
+     * Mostra no ecrã um display com o menu de entrada
+     */
     public void displayMainMenu(){
         System.out.println("*** Gestão de Agenda");
         System.out.println("");
@@ -68,6 +76,10 @@ public class Menu {
         System.out.println("0 - Sair");
         System.out.println("Escolha a sua opção: ");
     }
+
+    /**
+     * Mostra no ecrã as estatisticas 
+     */
     public void displayStatistics(){
         System.out.println("Estatisticas");
         System.out.println("Nome: "+std.getName());
@@ -87,10 +99,19 @@ public class Menu {
         System.out.println("Número de aulas práticas: "+stats.hoursByClassesType(ClassType.PRACTICAL));
         System.out.println("Número de aulas teóricas: "+stats.hoursByClassesType(ClassType.THEORY));
     }
+
+    /**
+     * Permite obter a opção que o utilizador escolheu no método displayMainMenu()
+     * @return option
+     */
     public int readMainOption(){
         int option = input.getIntegerNumber("Opção");
         return option;
     }
+
+    /**
+     * Mostra no ecrã um display de opções para editar
+     */
     public void displayEditOption(){
         System.out.println("*** Edição de Agenda");
         System.out.println("");
@@ -183,10 +204,19 @@ public class Menu {
             }
         }
     }
+
+    /**
+     * Permite obter a opção escolhida pelo utilizador no método displayEditDisplay()
+     * @return opção
+     */
     public int readEditOption(){
         int option = input.getIntegerNumber("Opção");
         return option;
     }
+
+    /**
+     * Mostra no ecrã um display de opções do visualizador da agenda
+     */
     public void displayViewOption(){
         System.out.println("*** Visualização de Agenda");
         System.out.println("");
@@ -200,16 +230,29 @@ public class Menu {
         System.out.println("0 - Voltar");
         System.out.println("Escolha a sua opção: ");
     }
+
+    /**
+     * Permite obter a opção escolhida pelo utilizador no método displayViewOption()
+     * @return
+     */
     public int readViewOption(){
         int option = input.getIntegerNumber("Opção");
         return option;
     }
+
+    /**
+     * Reseta a agenda de um aluno
+     */
     public void resetAgender(){
         int student = input.getIntegerNumber("Número de aluno");
         for(Agender agender: std.getAgender()){
             agender = null;
         }
     }
+
+    /**
+     * Executa o menu
+     */
     public void execute(){
         int option = 1;
         while(option != 0){
