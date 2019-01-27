@@ -21,13 +21,13 @@ public enum EvaluationType {
     public String toString() {
         switch(this){
             case TEST:
-                return " Test";
+                return "Test";
             case EXAM:
-                return " Exam";
+                return "Exam";
             case PRESENTATION:
-                return " Presentation";
+                return "Presentation";
             case PROJECT:
-                return " Project delivery";
+                return "Project delivery";
             default:
                 return "";
         }

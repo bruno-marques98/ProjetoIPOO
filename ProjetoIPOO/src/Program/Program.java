@@ -34,7 +34,11 @@ public class Program {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Viewer viewer = new Viewer();
+        UC uc = new UC("ohacs",23,50);
+        UCClass ucRoom = new UCClass();
+        uc.addClass(ucRoom);
+        System.out.println(ucRoom.minutesDuration());
+        /*Viewer viewer = new Viewer();
         
         Agender agender1 = new Agender(LocalDate.of(2018,10,1),LocalDate.of(2019,1,25),false);
         viewer.addAgender(agender1);
@@ -60,6 +64,8 @@ public class Program {
             System.out.println(ins.toString());
             System.out.println();
         }
-        System.out.println(viewer.getAgender().toString());
+        System.out.println(viewer.getAgender().toString());*/
+        Menu menu = new Menu();
+        menu.execute();
     }
 }

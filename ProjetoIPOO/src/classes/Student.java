@@ -34,7 +34,7 @@ public class Student {
         this.name = name;
         this.studentNumber++;
         this.birthDate = birthDate;
-        if(genre == 'H' || genre == 'F'){
+        if(genre == 'M' || genre == 'F'){
              this.genre = genre;
         }else{
             this.genre = 'M';
@@ -119,7 +119,7 @@ public class Student {
      */
     public Agender getActiveAgender(){
         for(Agender a : agenders){
-            if(a.getStartSemester().isAfter(LocalDate.now()) && a.getEndSemester().isBefore(LocalDate.now())){
+            if(a.getStartSemester().isBefore(LocalDate.now()) && a.getEndSemester().isAfter(LocalDate.now())){
                 return a;
             }
         }
@@ -130,9 +130,13 @@ public class Student {
      * Permite adicionar uma unidade curricular à lista de agendas ativas
      * @param uc
      */
-    public void addUC(UC uc){
-        Agender ag = getActiveAgender();
-        ag.addUC(uc);
+    public boolean addUC(UC uc){
+        if(getActiveAgender()!=null && uc!= null){
+            Agender ag = getActiveAgender();
+            ag.addUC(uc);
+            return true;
+        }
+        return false;        
     }
 
     @Override

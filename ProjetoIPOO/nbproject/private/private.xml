@@ -4,13 +4,15 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/classes/Classroom.java</file>
+            <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/classes/UCClass.java</file>
             <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/Program/Program.java</file>
             <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/Program/Viewer.java</file>
             <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/Statistics/Stats.java</file>
-            <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/classes/Instructor.java</file>
-            <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/classes/Student.java</file>
             <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/classes/Course.java</file>
+            <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/classes/Student.java</file>
             <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/classes/Agender.java</file>
+            <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/classes/CourseType.java</file>
+            <file>file:/C:/Users/bruno/OneDrive/Documentos/GitHub/ProjetoIPOO/ProjetoIPOO/src/Program/Menu.java</file>
         </group>
     </open-files>
 </project-private>

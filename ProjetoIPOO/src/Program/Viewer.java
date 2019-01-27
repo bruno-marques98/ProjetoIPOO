@@ -217,6 +217,7 @@ public class Viewer {
     }
     public int numberOfHoursClassType(ClassType type){
         int total = 0;
+        if(agender.getUcs()==null) return 0;
         for(UC ucs : agender.getUcs()){
             for(UCClass ucClasses : ucs.getClasses()){
                 if(ucClasses.getClassroomType().equals(type)){
@@ -228,6 +229,7 @@ public class Viewer {
     }
     public int numberOfHoursEvaluationType(EvaluationType type){
         int total = 0;
+        if(evaluations==null) return 0;
         for(Evaluation eval : evaluations){
             if(eval.getType().equals(type)){
                 total+=type.getDuration();

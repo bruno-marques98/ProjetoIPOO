@@ -39,6 +39,13 @@ public class UCClass {
         if(classroomType != null)this.classroomType = classroomType;
     }
 
+    public UCClass() {
+        this.startClass = LocalDateTime.now();
+        this.endClass = startClass.plusHours(2);
+        this.classroomType = ClassroomType.THEORY;
+    }
+    
+
     /**
      * Permite obter a data e hora do inicio da aula
      * @return data e hora

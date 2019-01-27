@@ -20,7 +20,7 @@ public class UC {
     private String id;
     private int numberOfCredits;
     private ArrayList<UCClass> classes;
-    private HashMap<Evaluation,Student> evaluation;
+    private HashMap<Evaluation,Student> evaluations;
     /**
      * Construtor que permite criar uma determinada unidade curricular 
      * @param UCName
@@ -33,19 +33,27 @@ public class UC {
         this.id = UCName + id;
         this.numberOfCredits = numberOfCredits;
         this.classes = classes;
-        this.evaluation = evaluation;
+        this.evaluations = evaluation;
     }
 
     public UC(String UCName, int id, int numberOfCredits) {
         this.UCName = UCName;
         this.id = UCName + id;
         this.numberOfCredits = numberOfCredits;
+        this.classes = new ArrayList<>();
+        this.evaluations = new HashMap<>();
     }
     
-  
 
+    public boolean addEvaluation(Evaluation evaluation,Student std){
+        if(evaluation!=null && std!=null && this.evaluations.containsKey(evaluation)){
+            this.evaluations.put(evaluation, std);
+            return true;
+        }
+        return false;
+    }
     public HashMap<Evaluation, Student> getEvaluation() {
-        return evaluation;
+        return evaluations;
     }
     
 
@@ -135,7 +143,7 @@ public class UC {
         hash = 79 * hash + this.id.hashCode();
         hash = 79 * hash + this.numberOfCredits;
         hash = 79 * hash + this.classes.hashCode();
-        hash = 79 * hash + this.evaluation.hashCode();
+        hash = 79 * hash + this.evaluations.hashCode();
         return hash;
     }
 
@@ -163,7 +171,7 @@ public class UC {
         if (!Objects.equals(this.classes, other.classes)) {
             return false;
         }
-        if (!Objects.equals(this.evaluation, other.evaluation)) {
+        if (!Objects.equals(this.evaluations ,other.evaluations)) {
             return false;
         }
         return true;

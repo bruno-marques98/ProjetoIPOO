@@ -6,6 +6,7 @@
 package classes;
 
 import java.time.LocalDate;
+import static java.time.temporal.ChronoUnit.DAYS;
 import static java.time.temporal.ChronoUnit.WEEKS;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -83,7 +84,7 @@ public class Agender {
     public void setSchedules(ArrayList<Schedule> schedules) {
         this.schedules = schedules;
     }
-    
+
 
     /**
      * Permite adicionar uma unidade curricular à coleção de unidades curriculares já existente
@@ -113,6 +114,13 @@ public class Agender {
     public boolean addInstructor(Instructor ins){
         if(ins != null){
             instructors.add(ins);
+            return true;
+        }
+        return false;
+    }
+    public boolean addSchedule(Schedule sch){
+        if(sch!=null){
+            schedules.add(sch);
             return true;
         }
         return false;
@@ -151,7 +159,7 @@ public class Agender {
                 }
             }
          }
-         double totalHours = totalMinutes / 60;
+         double totalHours = (double) totalMinutes / 60;
          return totalHours;
     }
     public ArrayList<Evaluation> evaluation(){
@@ -166,18 +174,14 @@ public class Agender {
     
     public int getNumberWeeks(){
         long weeksBetween = WEEKS.between(startSemester,endSemester);
-        return (int) weeksBetween;
+        return (int)weeksBetween;
     }
     
     public boolean setClassEveryWeek(Schedule schedule){
-        for(Schedule sch : schedules){
-            if(sch.equals(schedule)){
-                 for(int i = 0;i< getNumberWeeks(); i++){
-                     if(schedules.get(i) != null){
-                         schedules.add(i,new Schedule(schedule.getBeginning().plusDays(7),schedule.getEnding()));
-                         return true;
-                     }
-                }
+        for(int i = 0;i< getNumberWeeks(); i++){
+            if(schedules.get(i) != null){
+                schedules.add(i,new Schedule(schedule.getBeginning().plusDays(7),schedule.getEnding()));
+                return true;
             }
         }
         return false;

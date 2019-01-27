@@ -38,6 +38,8 @@ public class Stats {
             case LAB:
                 totalHours += viewer.numberOfHoursClassType(type); 
                 break;
+            default:
+                return 0;
         }
         return totalHours;
     }
@@ -57,8 +59,19 @@ public class Stats {
             case PROJECT:
                 totalHours += viewer.numberOfHoursEvaluationType(type);   
                 break;
+            default:
+                return 0;
         }
         return totalHours;
+    }
+    public int hoursOfEvaluations(){
+        int totalEvaluations = 0;
+        for(UC uc : viewer.getUCs()){
+            for(Evaluation e : viewer.getEvaluations(uc)){
+                totalEvaluations++;
+            }
+        }
+        return totalEvaluations;
     }
     public int evaluationsToDo(){
         int totalEvaluations = 0;

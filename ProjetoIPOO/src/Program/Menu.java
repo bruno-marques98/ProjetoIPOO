@@ -5,15 +5,24 @@
  */
 package Program;
 
+import Statistics.Stats;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import classes.Agender;
+import classes.ClassType;
+import classes.Course;
+import classes.CourseType;
+import classes.Evaluation;
+import classes.EvaluationType;
 import classes.Group;
 import classes.Instructor;
 import classes.Student;
 import classes.UC;
+import classes.UCClass;
+import classes.UCRoom;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -22,9 +31,32 @@ import classes.UC;
 public class Menu {
     private InputReader input;
     private Student std;
-    public Menu(Student std) {
+    private Viewer viewer;
+    private Stats stats;
+    public Menu() {
         this.input = new InputReader();
-        if(std != null)this.std = std;
+        String name = input.getText("Nome do aluno?");
+        int year = input.getIntegerNumber("Qual o ano de seu nascimento?");
+        int month = input.getIntegerNumber("Qual o mês de seu nascimento?");
+        int day = input.getIntegerNumber("Qual o dia de seu nascimento?");
+        char genre= input.getText("Sexo?(M/F)").charAt(0);
+        String course = input.getText("Qual o nome do curso?");
+        String type = input.getText("Qual o grau de estudo?(GRADUATION, POSTGRADUATE STUDIES, MASTER_DEGREE)");
+        CourseType courseType= null;
+        if(type.equalsIgnoreCase("Graduation")){
+            courseType = CourseType.GRADUATION;
+        }else if(type.equalsIgnoreCase("Postgraduate studies")){
+            courseType = CourseType.POSTGRADUATE_STUDIES;
+        }else if(type.equalsIgnoreCase("master degree")){
+            courseType = CourseType.MASTER_DEGREE;
+        }else{
+            courseType = CourseType.GRADUATION;
+        }
+        this.std = new Student(name,LocalDate.of(year, month, day),genre,new Course(course,courseType));
+        this.viewer = new Viewer();
+        viewer.addStudent(std);
+        this.stats = new Stats(viewer);
+        
     }
     public void displayMainMenu(){
         System.out.println("*** Gestão de Agenda");
@@ -40,11 +72,20 @@ public class Menu {
         System.out.println("Estatisticas");
         System.out.println("Nome: "+std.getName());
         System.out.println("Curso: "+std.getCourse().toString());
-        System.out.println("Numero de aluno: "+std.getStudentNumber());
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
-        System.out.println("");
+        System.out.println("Número de aluno: "+std.getStudentNumber());
+        System.out.println("Número de aulas por tipo:");
+        numberClassesByType();
+        System.out.println("Número de horas de avaliações: "+ stats.hoursOfEvaluations());
+        System.out.println("Quantidade de avaliações por fazer: "+stats.evaluationsToDo());
+        System.out.println("Número de horas de aulas até fim do semestre: "+stats.classesTillEnd());
+        System.out.println("Número de créditos das disciplinas: "+stats.totalCredits());
+        System.out.println("Média de horas semanais: "+stats.averageHoursPerWeek());
+        System.out.println("Número médio de aulas: " +stats.classesHours(std));
+    }
+    private void numberClassesByType(){
+        System.out.println("Número de aulas de laboratório: "+stats.hoursByClassesType(ClassType.LAB));
+        System.out.println("Número de aulas práticas: "+stats.hoursByClassesType(ClassType.PRACTICAL));
+        System.out.println("Número de aulas teóricas: "+stats.hoursByClassesType(ClassType.THEORY));
     }
     public int readMainOption(){
         int option = input.getIntegerNumber("Opção");
@@ -73,6 +114,7 @@ public class Menu {
         if(isPar.equalsIgnoreCase("true")) isSemPar = true;
         Agender agender = new Agender(begining,ending,isSemPar);
         std.addAgender(agender);
+        viewer.addAgender(agender);
     }
     private void addUC(){
         String ucName = input.getText("Qual o nome da UC?");
@@ -88,13 +130,56 @@ public class Menu {
         for(Agender agender : std.getAgender()){
             if(agender != null){
                 agender.addInstructor(ins);
+                viewer.addInstructor(ins);
             }
         }
     }
     private void addGroup(){
         for(Agender ag : std.getAgender()){
             if(ag!=null){
-                ag.addGroup(new Group());
+                Group group = new Group();
+                group.addStudent(std);
+                ag.addGroup(group);
+            }
+        }
+    }
+    private void addClass(){
+        String ucName = input.getText("Qual o nome da disciplina?");
+        for(UC uc : std.getActiveAgender().getUcs()){
+            if(uc.getUCName().equalsIgnoreCase(ucName)){
+                uc.addClass(new UCClass());
+            }
+        }
+    }
+    private void addEvaluation(){
+        String evalType = input.getText("Qual o tipo de avaliação?");
+        String description = input.getText("Adicionar descrição se quiser.");
+        int year = input.getIntegerNumber("Qual o ano da avaliação?");
+        int month = input.getIntegerNumber("Qual o mês da avaliação?");
+        int day = input.getIntegerNumber("Qual o dia da avaliação?");
+        int hour = input.getIntegerNumber("Qual a hora da avaliação?");
+        String ucName = input.getText("Qual o nome da disciplina alvo de avaliação?");
+        
+        EvaluationType type = null;
+        Evaluation eval = null;
+        if(evalType.equalsIgnoreCase("Test")){
+            type = EvaluationType.TEST;
+            eval = new Evaluation(type,description,LocalDateTime.of(year, month, day,hour,0,0));
+        }else if(evalType.equalsIgnoreCase("Exam")){
+            type = EvaluationType.EXAM;
+            eval = new Evaluation(type,description,LocalDateTime.of(year, month, day,hour,0,0));
+        }else if(evalType.equalsIgnoreCase("Presentation")){
+            type = EvaluationType.PRESENTATION;
+            eval = new Evaluation(type,description,LocalDateTime.of(year, month, day,hour,0,0));
+        }else if(evalType.equalsIgnoreCase("Project")){
+            type = EvaluationType.PROJECT;
+            eval = new Evaluation(type,description,LocalDateTime.of(year, month, day,hour,0,0));
+        }else{
+        }
+        for(UC uc : std.getActiveAgender().getUcs()){
+            if(uc.getUCName().equalsIgnoreCase(ucName)){
+                uc.addEvaluation(eval, std);
+                viewer.addEvaluation(eval);
             }
         }
     }
@@ -144,6 +229,12 @@ public class Menu {
                             break;
                         case 4: 
                             addGroup();
+                            break;
+                        case 5:
+                            addClass();
+                            break;
+                        case 6: 
+                            addEvaluation();
                             break;
                         default:
                             displayMainMenu();

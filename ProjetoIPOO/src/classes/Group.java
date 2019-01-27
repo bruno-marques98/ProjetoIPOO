@@ -30,6 +30,11 @@ public class Group {
         }
     }
 
+    public Group() {
+        this.students = new HashSet<>();
+    }
+    
+
     /**
      * Permite obter a unidade curricular
      * @return unidade curricular

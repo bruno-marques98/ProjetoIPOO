@@ -22,9 +22,13 @@ public class Evaluation {
      * @param type
      */
     private LocalDateTime date;
-    public Evaluation(EvaluationType type) {
+
+    public Evaluation(EvaluationType type, String description, LocalDateTime date) {
         this.type = type;
+        this.description = description;
+        this.date = date;
     }
+
 
     /**
      * Construtor que cria uma avaliação
@@ -38,6 +42,7 @@ public class Evaluation {
         this.classroom = classroom;
         this.date = LocalDateTime.now();
     }
+    
 
     public EvaluationType getType() {
         return type;
