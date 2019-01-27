@@ -49,7 +49,7 @@ public class Viewer {
         this.instructors = new ArrayList<>();
         this.students = new ArrayList<>();
     }
-    public boolean addAgender(Agender agender){
+    public boolean setAgender(Agender agender){
         if(agender!=null){
             this.agender = agender;
             //System.out.println("Add agender");

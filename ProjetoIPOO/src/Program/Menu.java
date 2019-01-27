@@ -114,7 +114,7 @@ public class Menu {
         if(isPar.equalsIgnoreCase("true")) isSemPar = true;
         Agender agender = new Agender(begining,ending,isSemPar);
         std.addAgender(agender);
-        viewer.addAgender(agender);
+        viewer.setAgender(agender);
     }
     private void addUC(){
         String ucName = input.getText("Qual o nome da UC?");
