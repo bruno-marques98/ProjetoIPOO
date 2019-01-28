@@ -233,11 +233,7 @@ public class Agender {
         long totalMinutes=0;
          for(UC uc: ucs){
             if(uc != null){
-                for(UCClass ucc: uc.getClasses()){
-                    if(ucc != null){
-                        totalMinutes += ucc.minutesDuration();
-                    }
-                }
+                totalMinutes = uc.getClasses().stream().filter((ucc) -> (ucc != null)).map((ucc) -> ucc.minutesDuration()).reduce(totalMinutes, (accumulator, _item) -> accumulator + _item);
             }
          }
          double totalHours = (double) totalMinutes / 60;
@@ -251,9 +247,9 @@ public class Agender {
     public ArrayList<Evaluation> evaluation(){
         ArrayList<Evaluation> evaluations = new ArrayList<>();
         for(UC uc : ucs){
-            for(Evaluation evaluation: uc.getEvaluation().keySet()){
-                 evaluations.add(evaluation);
-            }
+            uc.getEvaluation().keySet().forEach((evaluation) -> {
+                evaluations.add(evaluation);
+            });
         }
         return evaluations;
     }
@@ -326,10 +322,7 @@ public class Agender {
         if (!Objects.equals(this.groups, other.groups)) {
             return false;
         }
-        if (!Objects.equals(this.schedules, other.schedules)) {
-            return false;
-        }
-        return true;
+        return Objects.equals(this.schedules, other.schedules);
     }
 
     /**

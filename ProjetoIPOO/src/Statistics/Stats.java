@@ -86,9 +86,7 @@ public class Stats {
     public int hoursOfEvaluations(){
         int totalEvaluations = 0;
         for(UC uc : viewer.getUCs()){
-            for(Evaluation e : viewer.getEvaluations(uc)){
-                totalEvaluations++;
-            }
+            totalEvaluations = viewer.getEvaluations(uc).stream().map((_item) -> 1).reduce(totalEvaluations, Integer::sum);
         }
         return totalEvaluations;
     }
@@ -100,11 +98,7 @@ public class Stats {
     public int evaluationsToDo(){
         int totalEvaluations = 0;
         for(UC uc : viewer.getUCs()){
-            for(Evaluation e : viewer.getEvaluations(uc)){
-                if(e.getDate().compareTo(LocalDateTime.now())> 0){
-                    totalEvaluations++;
-                }
-            }
+            totalEvaluations = viewer.getEvaluations(uc).stream().filter((e) -> (e.getDate().compareTo(LocalDateTime.now())> 0)).map((_item) -> 1).reduce(totalEvaluations, Integer::sum);
         }
         return totalEvaluations;
     }
@@ -115,11 +109,7 @@ public class Stats {
      */
     public int classesTillEnd(){
         int count = 0;
-        for(Schedule s : viewer.getAgender().getSchedules()){
-            if(s.getEnding().compareTo(LocalDateTime.now())>0){
-                count++;
-            }
-        }
+        count = viewer.getAgender().getSchedules().stream().filter((s) -> (s.getEnding().compareTo(LocalDateTime.now())>0)).map((_item) -> 1).reduce(count, Integer::sum);
         return count;
     }
 
